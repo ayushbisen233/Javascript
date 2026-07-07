@@ -1,0 +1,55 @@
+<html>
+
+<head>
+
+    <form id="detailsForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <br><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" required>
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        function showwelcome() {
+            let name = document.getElementsByID("name").value;
+            let age = document.getElementsByID("age").value;
+
+            //display welcome msg
+            document.getElementById("output").innerHTML = "<h2> welcome" + name + "!</h2>" + "<p> Your age " + age + "</p>";
+
+            console.log("name: " + name);
+            console.info("age: " + age);
+            console.warn("warn msg");
+            console.error("error msg");
+        }
+
+    </script>
+</head>
+
+</body>
+
+<h1>User Info</h1>
+<label>
+    enter name:
+</label><br>
+<input type="text" id="name" placeholder="" enter name><br><br>
+<label>
+    enter age:
+</label><br>
+<input type="number" id="age" placeholder="" enter age><br><br>
+<button onclick="showwelcome(); greet();">submit</button>
+
+<hr>
+<div id="output"></div>
+<!-- External Javascript -->
+<script src="script.js"></script>
+</body>
+
+</html>
