@@ -1,0 +1,83 @@
+<html>
+
+<head>
+    <title>Student Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightgreen;
+            margin: 30px;
+        }
+
+        input,
+        select {
+            display: block;
+            margin: 5px 0 15px 0;
+            padding: 5px;
+            width: 250px;
+        }
+
+        button {
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+
+        #output {
+            margin-top: 20px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: blue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Student Information Form</h1>
+
+    <form id="studentForm" onsubmit="showStudentInfo(event)">
+        <label>Student Name:</label>
+        <input type="text" id="studentName" required>
+
+        <label>Department:</label>
+        <select id="dept" required>
+            <option value="">Select Department</option>
+            <option value="Computer Science">Computer Science & Eng.</option>
+            <option value="Information Technology">Information Technology</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Robotics">Robotics & AI</option>
+        </select>
+
+        <button type="submit">Submit Information</button>
+    </form>
+
+    <div id="output"></div>
+
+    <br>
+    <a href="clg.html">&larr; Departments Page</a>
+
+    <script>
+        function showStudentInfo(event) {
+            event.preventDefault();
+            let name = document.getElementById("studentName").value;
+            let dept = document.getElementById("dept").value;
+            let outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = "<h3>Submitted Details:</h3>" +
+                "<p><b>Name:</b> " + name + "</p>" +
+                "<p><b>Department:</b> " + dept + "</p>";
+            console.log("studentName:", name);
+            console.info("dept:", dept);
+            console.warn("warn msg");
+            console.error("error msg");
+
+            welcomeAlert();
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
