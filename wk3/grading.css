@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    color: #333333;
+}
+h2 {
+    color: #28a745;
+}
+form {
+    margin: 0 auto;
+    width: 300px;
+    text-align: left;
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+}
+input[type="text"], input[type="number"], input[type="button"] {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+input[type="button"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+input[type="button"]:hover {
+    background-color: #218838;
+}
+.report-card {
+    display: none;
+    margin: 20px auto 0 auto;
+    text-align: left;
+    width: 300px;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 20px;
+    border-radius: 4px;
+}

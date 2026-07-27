@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SIT Student Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <h2>SIT Student Login</h2>
+    <form onsubmit="return validateForm()">
+        <label>Login ID (Name):</label><br>
+        <input type="text" id="loginId"><br>
+        <div class="error" id="loginIdError"></div>
+
+        <label>Password:</label><br>
+        <input type="password" id="password"><br>
+        <div class="error" id="passwordError"></div>
+
+        <input type="submit" value="Login">
+        <div class="success" id="successMessage"></div>
+    </form>
+    <script src="login.js"></script>
+</body>
+</html>
