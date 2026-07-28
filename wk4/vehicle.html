@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Registration Number Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9;
+            color: #1b5e20;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            border: 2px solid #4caf50;
+            width: 380px;
+        }
+
+        h1 {
+            color: #2e7d32;
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: #388e3c;
+            margin-bottom: 18px;
+        }
+
+        .format-hint {
+            font-size: 0.8rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #81c784;
+            border-radius: 4px;
+            font-size: 1rem;
+            outline: none;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        input[type="text"]:focus {
+            border-color: #388e3c;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .success {
+            background-color: #c8e6c9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+
+        .error {
+            background-color: #ffcdd2;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+        }
+
+        .rules {
+            margin-top: 20px;
+            text-align: left;
+            background-color: #f1f8f1;
+            border: 1px solid #c8e6c9;
+            border-radius: 4px;
+            padding: 12px 15px;
+        }
+
+        .rules h3 {
+            margin: 0 0 8px 0;
+            color: #2e7d32;
+            font-size: 0.9rem;
+        }
+
+        .rules ul {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 0.8rem;
+            color: #388e3c;
+        }
+
+        .rules ul li {
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Vehicle Registration Validator</h1>
+        <p>Enter your Vehicle Registration Number:</p>
+        <p class="format-hint">Format: <strong>SS DD AA NNNN</strong> (e.g., MH12AB1234)</p>
+
+        <div class="input-group">
+            <input type="text" id="vehicleInput" placeholder="e.g. MH12AB1234" maxlength="10">
+            <button id="validate-btn" onclick="validateVehicleReg()">Validate</button>
+        </div>
+
+        <div id="resultMessage" class="result"></div>
+
+        <div class="rules">
+            <h3>Validation Rules:</h3>
+            <ul>
+                <li><strong>Chars 1-2:</strong> Uppercase letters (State Code)</li>
+                <li><strong>Chars 3-4:</strong> Digits (District Code)</li>
+                <li><strong>Chars 5-6:</strong> Uppercase letters (Series)</li>
+                <li><strong>Chars 7-10:</strong> Digits (Vehicle Number)</li>
+                <li>Total length must be exactly <strong>10</strong> characters</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function validateVehicleReg() {
+            const input = document.getElementById("vehicleInput").value.toUpperCase().trim();
+            const resultElement = document.getElementById("resultMessage");
+
+            try {
+                if (input === "") {
+                    throw new Error("Registration number should not be empty.");
+                }
+
+                if (input.length !== 10) {
+                    throw new Error(
+                        "Length must be exactly 10 characters. You entered " + input.length + " character(s)."
+                    );
+                }
+
+                const stateCode = input.substring(0, 2);
+                if (!/^[A-Z]{2}$/.test(stateCode)) {
+                    throw new Error(
+                        "First two characters must be uppercase alphabets (State Code). Found: '" + stateCode + "'"
+                    );
+                }
+
+                const districtCode = input.substring(2, 4);
+                if (!/^\d{2}$/.test(districtCode)) {
+                    throw new Error(
+                        "Characters 3-4 must be digits (District Code). Found: '" + districtCode + "'"
+                    );
+                }
+
+                const series = input.substring(4, 6);
+                if (!/^[A-Z]{2}$/.test(series)) {
+                    throw new Error(
+                        "Characters 5-6 must be uppercase alphabets (Series). Found: '" + series + "'"
+                    );
+                }
+
+                const vehicleNumber = input.substring(6, 10);
+                if (!/^\d{4}$/.test(vehicleNumber)) {
+                    throw new Error(
+                        "Last four characters must be digits (Vehicle Number). Found: '" + vehicleNumber + "'"
+                    );
+                }
+
+                resultElement.textContent = "✔ VALID: '" + input + "' is a valid vehicle registration number.";
+                resultElement.className = "result success";
+                resultElement.style.display = "block";
+
+            } catch (err) {
+                resultElement.textContent = "✘ INVALID: " + err.message;
+                resultElement.className = "result error";
+                resultElement.style.display = "block";
+            }
+        }
+
+        document.getElementById("vehicleInput").addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                validateVehicleReg();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
