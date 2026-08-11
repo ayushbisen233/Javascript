@@ -3,14 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 5 - Array Manipulations</title>
+    <title>Min Max Finder - Array of Objects</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Array Manipulations & Methods</h1>
-        <div id="output"></div>
+        <header>
+            <h1>Min & Max Finder</h1>
+            <p>Array of Objects with User Input</p>
+        </header>
+
+        <section class="card">
+            <h2>Add New Item</h2>
+            <form id="itemForm" class="form-group">
+                <input type="text" id="itemName" placeholder="Item Name (e.g., Book)" required>
+                <input type="number" id="itemPrice" placeholder="Price (e.g., 50)" step="any" required>
+                <button type="submit">Add Item</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Current Items Array</h2>
+            <table id="itemsTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Item Name</th>
+                        <th>Price ($)</th>
+                    </tr>
+                </thead>
+                <tbody id="itemsList"></tbody>
+            </table>
+        </section>
+
+        <section class="card">
+            <h2>Min & Max Results</h2>
+            <div class="results-grid">
+                <div class="result-box min-box">
+                    <h3>Minimum Item</h3>
+                    <p id="minResult">No items added yet</p>
+                </div>
+                <div class="result-box max-box">
+                    <h3>Maximum Item</h3>
+                    <p id="maxResult">No items added yet</p>
+                </div>
+            </div>
+        </section>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

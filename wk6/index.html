@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 6 Text Processing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        
+        <label for="userPara"><strong>Input Paragraph:</strong></label><br>
+        <textarea id="userPara" rows="5" placeholder="Enter paragraph here..."></textarea><br>
+        <button id="btnSubmitPara" style="margin-bottom: 20px;">Submit</button>
+        
+        <div class="section">
+            <h3>1. Original Paragraph</h3>
+            <button id="btnShowOriginal">Show Original</button>
+            <div id="out-tool-1" class="output"></div>
+        </div>
+
+        <div class="section">
+            <h3>2. Vowels</h3>
+            <button id="btnFindVowels">Find Vowels</button>
+            <div id="out-tool-2" class="output"></div>
+        </div>
+
+        <div class="section">
+            <h3>3. Replace Word</h3>
+            <input type="text" id="findWordInput" placeholder="Find word">
+            <input type="text" id="replaceWordInput" placeholder="Replace with">
+            <button id="btnReplaceWord">Replace</button>
+            <div id="out-tool-3" class="output"></div>
+        </div>
+
+        <div class="section">
+            <h3>4. Position of Word</h3>
+            <input type="text" id="posWordInput" placeholder="Search word">
+            <button id="btnFindPosition">Find Position</button>
+            <div id="out-tool-4" class="output"></div>
+        </div>
+
+        <div class="section">
+            <h3>5. Regex Email Validation</h3>
+            <input type="text" id="emailValInput" placeholder="Enter email">
+            <button id="btnValidateEmail">Validate</button>
+            <div id="out-tool-5" class="output"></div>
+        </div>
+
+        <div class="section">
+            <h3>6. Regex Extract Emails</h3>
+            <button id="btnExtractEmails">Extract Emails</button>
+            <div id="out-tool-6" class="output"></div>
+        </div>
+
+        <div class="section">
+            <h3>7. Reverse Paragraph</h3>
+            <button id="btnReverseChars">Reverse by Chars</button>
+            <button id="btnReverseWords">Reverse by Words</button>
+            <div id="out-tool-7" class="output"></div>
+        </div>
+
+        <footer>
+            <p>Made by Ayush Bisen</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
