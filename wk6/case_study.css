@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+h1, h2, h3 {
+    color: #2e7d32;
+}
+
+textarea {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 5px;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.tool-section {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc; /* Removed the green strip and background */
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #2e7d32;
+    cursor: pointer;
+}
+
+.output {
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px dashed #ccc;
+    background-color: #f9f9f9;
+}
+
+.highlight {
+    background-color: #c8e6c9;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}

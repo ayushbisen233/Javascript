@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 6 Case Study</title>
+    <link rel="stylesheet" href="case_study.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Week 6 Case Study: Text Processing</h1>
+        </header>
+        
+        <section class="case-study">
+            <h2>Overview</h2>
+            <p>In Week 6, we focused on Javascript string manipulation, regular expressions, and event handling. We built a text processing tool that can count vowels, find and replace words, search for word positions, validate and extract emails using Regex, and reverse paragraphs.</p>
+            <p>This case study highlights the importance of string methods like <code>indexOf</code>, <code>match</code>, <code>replace</code>, and <code>split</code>/<code>reverse</code>/<code>join</code> for handling user input efficiently.</p>
+        </section>
+
+        <section class="programs">
+            <h2>Interactive Programs</h2>
+            <label for="inputText"><strong>Input Text:</strong></label><br>
+            <textarea id="inputText" rows="5" placeholder="Enter your string or paragraph here..."></textarea><br>
+            
+            <div class="tool-section">
+                <h3>1. Reverse a String</h3>
+                <button id="btnReverseString">Reverse String</button>
+                <div id="outReverse" class="output"></div>
+            </div>
+
+            <div class="tool-section">
+                <h3>2. Count Vowels in Paragraph</h3>
+                <button id="btnCountVowels">Count Vowels</button>
+                <div id="outVowels" class="output"></div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Made by Ayush Bisen</p>
+        </footer>
+    </div>
+    <script src="case_study.js"></script>
+</body>
+</html>
