@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+    padding: 20px;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+h1 {
+    color: #2e7d32; /* Classic green theme heading */
+    text-align: center;
+}
+
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    font-family: Arial, sans-serif;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #4CAF50; /* Green button */
+    color: white;
+    border: 1px solid #2e7d32;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px dashed #ccc;
+    background-color: #f9f9f9;
+    margin-bottom: 5px;
+}
+
+.task-text {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.actions button {
+    padding: 5px 10px;
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.actions .edit-btn {
+    background-color: #fbc02d;
+    border-color: #f9a825;
+    color: #333;
+}
+
+.actions .edit-btn:hover {
+    background-color: #f9a825;
+}
+
+.actions .delete-btn {
+    background-color: #e53935;
+    border-color: #c62828;
+}
+
+.actions .delete-btn:hover {
+    background-color: #c62828;
+}
+
+/* Edit mode styles */
+.edit-mode .task-text {
+    display: none;
+}
+
+.edit-input {
+    display: none;
+    flex-grow: 1;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.edit-mode .edit-input {
+    display: inline-block;
+}
+
+.edit-mode .edit-btn {
+    background-color: #4CAF50; /* Green to indicate save */
+    border-color: #2e7d32;
+    color: white;
+}
+
+.edit-mode .edit-btn:hover {
+    background-color: #45a049;
+}
