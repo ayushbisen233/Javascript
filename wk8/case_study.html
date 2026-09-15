@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Admission Registration Form</title>
+    <link rel="stylesheet" href="case_study.css">
+</head>
+<body>
+    <h2>Gym Admission Registration Form</h2>
+    
+    <div class="form-container">
+        <form id="gymForm">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-name">Name:</td>
+                        <td class="col-value">
+                            <input type="text" id="name" name="name" placeholder="Enter your name">
+                            <div class="error-msg" id="nameError">Please enter your name.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-name">Sex:</td>
+                        <td class="col-value">
+                            <div class="radio-group">
+                                <label><input type="radio" name="sex" value="Male"> Male</label>
+                                <label><input type="radio" name="sex" value="Female"> Female</label>
+                            </div>
+                            <div class="error-msg" id="sexError">Please select your sex.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-name">Eye Color:</td>
+                        <td class="col-value">
+                            <select id="eyeColor" name="eyeColor">
+                                <option value="">--Select--</option>
+                                <option value="Green">Green</option>
+                                <option value="Blue">Blue</option>
+                                <option value="Brown">Brown</option>
+                                <option value="Black">Black</option>
+                            </select>
+                            <div class="error-msg" id="eyeColorError">Please select an eye color.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-name">Address:</td>
+                        <td class="col-value">
+                            <textarea id="address" name="address" placeholder="Enter your full address..."></textarea>
+                            <div class="error-msg" id="addressError">Please enter your address.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-name">Check all that apply:</td>
+                        <td class="col-value">
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="attributes" value="Over 6 feet tall"> Over 6 feet tall</label>
+                                <label><input type="checkbox" name="attributes" value="Over 200 pounds"> Over 200 pounds</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-name">Describe your athletic ability:</td>
+                        <td class="col-value">
+                            <textarea id="ability" name="ability" placeholder="Describe your athletic ability here..."></textarea>
+                            <div class="error-msg" id="abilityError">Please describe your athletic ability.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="submit-cell">
+                            <button type="submit" class="btn-submit">Enter my information</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <div id="resultContainer">
+        <h3>Successfully Submitted Information</h3>
+        <div id="resultData"></div>
+    </div>
+
+    <script src="case_study.js"></script>
+</body>
+</html>

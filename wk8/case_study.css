@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f9f2; /* Light greenish background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    margin: 0;
+}
+
+h2 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-container {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #4CAF50;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-top: 5px solid #2e7d32;
+}
+
+table {
+    border-collapse: collapse;
+    width: 500px;
+}
+
+th, td {
+    border: 1px solid #c8e6c9;
+    padding: 10px 15px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: #4CAF50; /* Classic Green */
+    color: white;
+    font-weight: bold;
+}
+
+td.col-name {
+    width: 40%;
+    background-color: #fdfdfd;
+    font-weight: bold;
+    color: #388e3c;
+}
+
+td.col-value {
+    width: 60%;
+}
+
+td.submit-cell {
+    text-align: center;
+    border: none;
+    padding-top: 20px;
+}
+
+input[type="text"], select, textarea {
+    width: 100%;
+    padding: 6px;
+    box-sizing: border-box;
+    border: 1px solid #a5d6a7;
+    border-radius: 3px;
+}
+
+input[type="text"]:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 3px rgba(76, 175, 80, 0.5);
+}
+
+textarea {
+    height: 60px;
+    resize: vertical;
+}
+
+.radio-group, .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.radio-group label, .checkbox-group label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+}
+
+.radio-group input, .checkbox-group input {
+    margin-right: 8px;
+    accent-color: #4CAF50;
+}
+
+.btn-submit {
+    margin-top: 5px;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #388e3c;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
+.error-msg {
+    color: #d32f2f;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+#resultContainer {
+    margin-top: 30px;
+    width: 500px;
+    background-color: #e8f5e9;
+    border: 1px solid #4CAF50;
+    padding: 15px;
+    display: none;
+    box-sizing: border-box;
+}
+
+#resultContainer h3 {
+    margin-top: 0;
+    color: #2e7d32;
+}
