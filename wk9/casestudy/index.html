@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Seminar Schedule</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Technical Seminar Schedule</h1>
+
+    <div class="controls">
+        <button id="btn-local" class="btn">Local Storage</button>
+        <button id="btn-session" class="btn">Session Storage</button>
+        <button id="btn-clear" class="btn btn-clear">Clear All</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th rowspan="2" class="main-header">Day</th>
+                <th colspan="2" class="main-header">Schedule</th>
+                <th rowspan="2" class="main-header">Topic</th>
+            </tr>
+            <tr>
+                <th class="sub-header">Begin</th>
+                <th class="sub-header">End</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Monday -->
+            <tr>
+                <td rowspan="2" class="day-cell">Monday</td>
+                <td rowspan="2" class="begin-cell">8:00 a.m.</td>
+                <td rowspan="2" class="end-cell">5:00 p.m.</td>
+                <td class="topic-cell"><input type="text" class="topic-input" data-index="0" placeholder="Type topic..."></td>
+            </tr>
+            <tr>
+                <td class="topic-cell"><input type="text" class="topic-input" data-index="1" placeholder="Type topic..."></td>
+            </tr>
+            
+            <!-- Tuesday -->
+            <tr>
+                <td rowspan="3" class="day-cell">Tuesday</td>
+                <td class="begin-cell">8:00 a.m.</td>
+                <td class="end-cell">11:00 a.m.</td>
+                <td class="topic-cell"><input type="text" class="topic-input" data-index="2" placeholder="Type topic..."></td>
+            </tr>
+            <tr>
+                <td class="begin-cell">11:00 a.m.</td>
+                <td class="end-cell">2:00 p.m.</td>
+                <td class="topic-cell"><input type="text" class="topic-input" data-index="3" placeholder="Type topic..."></td>
+            </tr>
+            <tr>
+                <td class="begin-cell">2:00 p.m.</td>
+                <td class="end-cell">5:00 p.m.</td>
+                <td class="topic-cell"><input type="text" class="topic-input" data-index="4" placeholder="Type topic..."></td>
+            </tr>
+
+            <!-- Wednesday -->
+            <tr>
+                <td class="day-cell">Wednesday</td>
+                <td class="begin-cell">8:00 a.m.</td>
+                <td class="end-cell">12:00 p.m.</td>
+                <td class="topic-cell"><input type="text" class="topic-input" data-index="5" placeholder="Type topic..."></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+/* CSS Reset and base styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f1f8e9; /* Light classic green background */
+    color: #121212; 
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin-bottom: 1rem;
+    color: #2e7d32; /* Classic green */
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.controls {
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+    background-color: #388e3c;
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-clear {
+    background-color: #e53935; /* Red color for clear button */
+}
+
+.btn-clear:hover {
+    background-color: #c62828;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    max-width: 900px;
+    background-color: white;
+    border: 4px solid #2e7d32;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+th, td {
+    border: 2px solid #a5d6a7;
+    padding: 1.2rem;
+    text-align: center;
+}
+
+/* Headers */
+th.main-header {
+    background-color: #2e7d32; 
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+}
+
+th.sub-header {
+    background-color: #4caf50; 
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Rows */
+.day-cell {
+    font-weight: bold;
+    background-color: #c8e6c9;
+    color: #1b5e20;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.day-cell:hover {
+    background-color: #a5d6a7;
+}
+
+.begin-cell, .end-cell {
+    background-color: #e8f5e9; 
+    font-weight: 500;
+}
+
+.topic-cell {
+    background-color: #ffffff; 
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    min-width: 250px;
+    height: 60px; /* Ensure empty cells maintain height */
+    padding: 0; /* Removing padding so input can fill the space */
+    cursor: pointer;
+}
+
+.topic-input {
+    width: 100%;
+    height: 100%;
+    padding: 1.2rem;
+    box-sizing: border-box;
+    border: none;
+    background: transparent;
+    font-size: 1.1rem;
+    font-family: inherit;
+    font-weight: 600;
+    text-align: center;
+    outline: none;
+    color: inherit;
+}
+
+.topic-input::placeholder {
+    color: #a5d6a7;
+    font-weight: 400;
+}
+
+.topic-cell.filled {
+    background-color: #dcedc8; /* Light green when filled */
+}
+
+.topic-cell.filled:hover {
+    background-color: #ffcc80; /* Hover effect: soft orange */
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    th, td {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .topic-input {
+        padding: 0.8rem;
+    }
+}
+
+@media (max-width: 500px) {
+    body {
+        padding: 1rem;
+    }
+    th, td {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+    .topic-input {
+        padding: 0.5rem;
+    }
+}
