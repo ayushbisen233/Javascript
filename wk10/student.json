@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "parth",
+        "dept": "Computer Science",
+        "marks": 90
+    },
+    {
+        "id": 2,
+        "name": "meet",
+        "dept": "Computer Science",
+        "marks": 85
+    },
+    {
+        "id": 3,
+        "name": "karan",
+        "dept": "Computer Science",
+        "marks": 92
+    },
+    {
+        "id": 4,
+        "name": "sohan",
+        "dept": "Computer Science",
+        "marks": 88
+    },
+    {
+        "id": 5,
+        "name": "tel",
+        "dept": "Computer Science",
+        "marks": 95
+    },
+    {
+        "id": 6,
+        "name": "Risha",
+        "dept": "Computer Science",
+        "marks": 82
+    },
+    {
+        "id": 7,
+        "name": "hisha",
+        "dept": "Computer Science",
+        "marks": 91
+    },
+    {
+        "id": 8,
+        "name": "Naman",
+        "dept": "Computer Science",
+        "marks": 87
+    },
+    {
+        "id": 9,
+        "name": "Sharman",
+        "dept": "Computer Science",
+        "marks": 93
+    },
+    {
+        "id": 10,
+        "name": "Jumanji",
+        "dept": "Computer Science",
+        "marks": 89
+    }
+]

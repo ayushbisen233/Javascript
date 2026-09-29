@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ticket booking form for the upcoming Technical Workshop for Students.">
+    <title>Technical Workshop Ticket Booking</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            /* Classic Green Theme Palette */
+            --primary-green: #2e7d32;
+            --primary-green-hover: #1b5e20;
+            --light-green: #e8f5e9;
+            --accent-green: #4caf50;
+            --text-main: #2c3e50;
+            --text-muted: #546e7a;
+            --bg-body: #f4f9f4;
+            --bg-card: #ffffff;
+            --border-color: #c8e6c9;
+            --focus-ring: rgba(76, 175, 80, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .booking-container {
+            background-color: var(--bg-card);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.08);
+            width: 100%;
+            max-width: 500px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid var(--primary-green);
+        }
+
+        /* Subtle decorative element */
+        .booking-container::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background-color: var(--light-green);
+            border-radius: 50%;
+            z-index: 0;
+            opacity: 0.6;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            color: var(--primary-green);
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background-color: #fafdfa;
+            color: var(--text-main);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 4px var(--focus-ring);
+            background-color: #ffffff;
+        }
+
+        .form-control::placeholder {
+            color: #90a4ae;
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%232e7d32' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 0.875rem;
+            background: linear-gradient(135deg, var(--accent-green), var(--primary-green));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(46, 125, 50, 0.3);
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-hover));
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        /* Micro animation for inputs */
+        .form-control {
+            transform: translateY(0);
+        }
+        .form-group:focus-within .form-control {
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="booking-container">
+        <div class="header">
+            <h1>Technical Workshop</h1>
+            <p>Secure your spot for the upcoming student workshop</p>
+        </div>
+
+        <form action="#" method="POST" id="bookingForm">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" class="form-control" placeholder="e.g. Jane Doe" required>
+            </div>
+
+            <div class="form-group">
+                <label for="studentId">Student ID / Roll Number</label>
+                <input type="text" id="studentId" name="studentId" class="form-control" placeholder="e.g. CS2023001" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">College Email Address</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="jane.doe@college.edu" required>
+            </div>
+
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select id="department" name="department" class="form-control" required>
+                    <option value="" disabled selected>Select your department</option>
+                    <option value="cs">Computer Science</option>
+                    <option value="it">Information Technology</option>
+                    <option value="ece">Electronics & Communication</option>
+                    <option value="ee">Electrical Engineering</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="track">Workshop Track</label>
+                <select id="track" name="track" class="form-control" required>
+                    <option value="" disabled selected>Choose a topic</option>
+                    <option value="ai">Artificial Intelligence & ML</option>
+                    <option value="web">Full-Stack Web Development</option>
+                    <option value="cyber">Cybersecurity Basics</option>
+                    <option value="cloud">Cloud Computing (AWS)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-submit">Book My Ticket</button>
+        </form>
+    </div>
+
+    <script>
+        // Simple form submission prevention for demo purposes
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.querySelector('.btn-submit');
+            const originalText = btn.textContent;
+            
+            btn.textContent = 'Booking Confirmed!';
+            btn.style.background = 'linear-gradient(135deg, #43a047, #2e7d32)';
+            
+            setTimeout(() => {
+                this.reset();
+                btn.textContent = originalText;
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
