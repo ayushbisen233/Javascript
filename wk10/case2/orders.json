@@ -1,0 +1,42 @@
+[
+  {
+    "orderId": "ORD001",
+    "customerName": "Rahul Sharma",
+    "foodItem": "Paneer Butter Masala",
+    "quantity": 2,
+    "totalAmount": 450.00,
+    "orderStatus": "Preparing"
+  },
+  {
+    "orderId": "ORD002",
+    "customerName": "Priya Patel",
+    "foodItem": "Chicken Biryani",
+    "quantity": 1,
+    "totalAmount": 350.00,
+    "orderStatus": "Ready"
+  },
+  {
+    "orderId": "ORD003",
+    "customerName": "Amit Singh",
+    "foodItem": "Masala Dosa",
+    "quantity": 3,
+    "totalAmount": 240.00,
+    "orderStatus": "Delivered"
+  },
+  {
+    "orderId": "ORD004",
+    "customerName": "Neha Gupta",
+    "foodItem": "Chole Bhature",
+    "quantity": 1,
+    "totalAmount": 150.00,
+    "orderStatus": "Preparing"
+  },
+  {
+    "orderId": "ORD005",
+    "customerName": "Vikram Reddy",
+    "foodItem": "Tandoori Roti",
+    "quantity": 5,
+    "totalAmount": 100.00,
+    "orderStatus": "Ready"
+  }
+]

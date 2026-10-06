@@ -1,0 +1,50 @@
+[
+    {
+        "empId": "EMP001",
+        "empName": "Sophia Reynolds",
+        "department": "Engineering",
+        "salary": 120000
+    },
+    {
+        "empId": "EMP002",
+        "empName": "Marcus Chen",
+        "department": "Product Design",
+        "salary": 95000
+    },
+    {
+        "empId": "EMP003",
+        "empName": "Elena Rodriguez",
+        "department": "Marketing",
+        "salary": 88000
+    },
+    {
+        "empId": "4",
+        "empName": "ddcd",
+        "department": "ddc",
+        "salary": 56408
+    },
+    {
+        "empId": "55",
+        "empName": "dfdf",
+        "department": "fdfdf",
+        "salary": 5645
+    },
+    {
+        "empId": "7",
+        "empName": "bhj",
+        "department": "mjk",
+        "salary": 644
+    },
+    {
+        "empId": "56",
+        "empName": "hbhj",
+        "department": "vghv",
+        "salary": 54145
+    },
+    {
+        "empId": "333",
+        "empName": "dd",
+        "department": "dd",
+        "salary": 23
+    }
+]

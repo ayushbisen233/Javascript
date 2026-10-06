@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ticket booking form for the upcoming Technical Workshop for Students.">
-    <title>Technical Workshop Ticket Booking</title>
+    <title>Employee Management System</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
         :root {
-            /* Classic Green Theme Palette */
             --primary-green: #2e7d32;
             --primary-green-hover: #1b5e20;
             --light-green: #e8f5e9;
@@ -26,34 +25,34 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
             background-color: var(--bg-body);
             color: var(--text-main);
+            min-height: 100vh;
+            padding: 3rem 1rem;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 2rem;
+            align-items: flex-start;
             line-height: 1.6;
         }
 
-        .booking-container {
-            background-color: var(--bg-card);
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.08);
+        .container {
             width: 100%;
-            max-width: 500px;
+            max-width: 1000px;
+            background: var(--bg-card);
+            border-radius: 16px;
             padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.08);
+            border-top: 5px solid var(--primary-green);
+            animation: fadeIn 0.8s ease-out;
             position: relative;
             overflow: hidden;
-            border-top: 5px solid var(--primary-green);
         }
 
-        /* Subtle decorative element */
-        .booking-container::before {
+        .container::before {
             content: '';
             position: absolute;
             top: -50px;
@@ -66,172 +65,462 @@
             opacity: 0.6;
         }
 
-        .header {
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-green);
             text-align: center;
-            margin-bottom: 2rem;
             position: relative;
             z-index: 1;
         }
 
-        .header h1 {
-            color: var(--primary-green);
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+        p.subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .header p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.8fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .layout-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-section,
+        .table-section {
+            background: var(--light-green);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-section h2,
+        .table-section h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .form-group {
-            margin-bottom: 1.25rem;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 1.5rem;
         }
 
-        .form-group label {
+        label {
             display: block;
             margin-bottom: 0.5rem;
-            font-weight: 500;
             font-size: 0.9rem;
+            font-weight: 500;
             color: var(--text-main);
         }
 
-        .form-control {
+        input {
             width: 100%;
             padding: 0.75rem 1rem;
+            background: #fafdfa;
             border: 1px solid var(--border-color);
             border-radius: 8px;
+            color: var(--text-main);
             font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
             transition: all 0.3s ease;
-            background-color: #fafdfa;
-            color: var(--text-main);
         }
 
-        .form-control:focus {
+        input:focus {
             outline: none;
             border-color: var(--accent-green);
+            background: #ffffff;
             box-shadow: 0 0 0 4px var(--focus-ring);
-            background-color: #ffffff;
         }
 
-        .form-control::placeholder {
+        input::placeholder {
             color: #90a4ae;
         }
 
-        select.form-control {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%232e7d32' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            background-size: 1em;
-        }
-
-        .btn-submit {
+        .btn {
             width: 100%;
-            padding: 0.875rem;
-            background: linear-gradient(135deg, var(--accent-green), var(--primary-green));
-            color: white;
+            padding: 1rem;
             border: none;
             border-radius: 8px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 1rem;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .btn-submit:hover {
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-green), var(--primary-green));
+            color: white;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
+            margin-top: 2rem;
+        }
+
+        .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(46, 125, 50, 0.3);
             background: linear-gradient(135deg, var(--primary-green), var(--primary-green-hover));
         }
 
-        .btn-submit:active {
-            transform: translateY(0);
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--primary-green);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.2rem;
+            font-size: 0.85rem;
+            width: auto;
+            border-radius: 6px;
         }
 
-        /* Micro animation for inputs */
-        .form-control {
-            transform: translateY(0);
+        .btn-secondary:hover {
+            background: var(--light-green);
+            transform: translateY(-2px);
+            border-color: var(--accent-green);
         }
-        .form-group:focus-within .form-control {
-            transform: translateY(-1px);
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        th,
+        td {
+            padding: 1rem;
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary-green);
+            color: #ffffff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        th:first-child {
+            border-top-left-radius: 8px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 8px;
+        }
+
+        td {
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-card);
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        tr:last-child td:first-child {
+            border-bottom-left-radius: 8px;
+        }
+
+        tr:last-child td:last-child {
+            border-bottom-right-radius: 8px;
+        }
+
+        tr {
+            transition: all 0.2s ease;
+        }
+
+        tr:hover td {
+            background: var(--light-green);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-muted);
+        }
+
+        .status-msg {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            text-align: center;
+            min-height: 1.5rem;
+            color: var(--primary-green);
         }
     </style>
 </head>
+
 <body>
 
-    <div class="booking-container">
-        <div class="header">
-            <h1>Technical Workshop</h1>
-            <p>Secure your spot for the upcoming student workshop</p>
+    <div class="container">
+        <h1>Employee Directory</h1>
+        <p class="subtitle">Manage your organization's workforce seamlessly</p>
+
+        <div class="layout-grid">
+            <!-- Form Section -->
+            <div class="form-section">
+                <h2>Add Employee</h2>
+                <form id="employeeForm">
+                    <div class="form-group">
+                        <label for="empId">Employee ID</label>
+                        <input type="text" id="empId" placeholder="e.g. EMP004" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="empName">Employee Name</label>
+                        <input type="text" id="empName" placeholder="e.g. Jane Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="department">Department</label>
+                        <input type="text" id="department" placeholder="e.g. Engineering" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="salary">Salary ($)</label>
+                        <input type="number" id="salary" placeholder="e.g. 75000" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Add Record</button>
+                    <div id="statusMessage" class="status-msg"></div>
+                </form>
+            </div>
+
+            <!-- Table Section -->
+            <div class="table-section">
+                <h2>
+                    Directory Records
+                    <button id="loadBtn" class="btn btn-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            style="margin-right: 6px;">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                        </svg>
+                        Load JSON
+                    </button>
+                </h2>
+
+                <div class="table-wrapper">
+                    <table id="employeeTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Salary</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data will be injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-
-        <form action="#" method="POST" id="bookingForm">
-            <div class="form-group">
-                <label for="fullName">Full Name</label>
-                <input type="text" id="fullName" name="fullName" class="form-control" placeholder="e.g. Jane Doe" required>
-            </div>
-
-            <div class="form-group">
-                <label for="studentId">Student ID / Roll Number</label>
-                <input type="text" id="studentId" name="studentId" class="form-control" placeholder="e.g. CS2023001" required>
-            </div>
-
-            <div class="form-group">
-                <label for="email">College Email Address</label>
-                <input type="email" id="email" name="email" class="form-control" placeholder="jane.doe@college.edu" required>
-            </div>
-
-            <div class="form-group">
-                <label for="department">Department</label>
-                <select id="department" name="department" class="form-control" required>
-                    <option value="" disabled selected>Select your department</option>
-                    <option value="cs">Computer Science</option>
-                    <option value="it">Information Technology</option>
-                    <option value="ece">Electronics & Communication</option>
-                    <option value="ee">Electrical Engineering</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="track">Workshop Track</label>
-                <select id="track" name="track" class="form-control" required>
-                    <option value="" disabled selected>Choose a topic</option>
-                    <option value="ai">Artificial Intelligence & ML</option>
-                    <option value="web">Full-Stack Web Development</option>
-                    <option value="cyber">Cybersecurity Basics</option>
-                    <option value="cloud">Cloud Computing (AWS)</option>
-                </select>
-            </div>
-
-            <button type="submit" class="btn-submit">Book My Ticket</button>
-        </form>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
-        // Simple form submission prevention for demo purposes
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = document.querySelector('.btn-submit');
-            const originalText = btn.textContent;
-            
-            btn.textContent = 'Booking Confirmed!';
-            btn.style.background = 'linear-gradient(135deg, #43a047, #2e7d32)';
-            
-            setTimeout(() => {
-                this.reset();
-                btn.textContent = originalText;
-            }, 3000);
+        $(document).ready(() => {
+            let employees = [];
+
+            const form = document.getElementById('employeeForm');
+            const tbody = document.querySelector('#employeeTable tbody');
+            const loadBtn = document.getElementById('loadBtn');
+            const statusMessage = document.getElementById('statusMessage');
+
+            // 1. Initialize from localStorage
+            function loadFromLocalStorage() {
+                const stored = localStorage.getItem('company_employees');
+                if (stored) {
+                    try {
+                        employees = JSON.parse(stored);
+                        renderTable();
+                    } catch (e) {
+                        console.error('Error parsing local storage data');
+                    }
+                } else {
+                    renderEmptyState();
+                }
+            }
+
+            // 2. Render table function
+            function renderTable() {
+                tbody.innerHTML = '';
+
+                if (employees.length === 0) {
+                    renderEmptyState();
+                    return;
+                }
+
+                employees.forEach(emp => {
+                    const tr = document.createElement('tr');
+
+                    // Format salary with commas
+                    const formattedSalary = new Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: 'INR',
+                        maximumFractionDigits: 0
+                    }).format(emp.salary);
+
+                    tr.innerHTML = `
+                        <td><strong>${emp.empId}</strong></td>
+                        <td>${emp.empName}</td>
+                        <td>${emp.department}</td>
+                        <td>${formattedSalary}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+
+            function renderEmptyState() {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="4">
+                            <div class="empty-state">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem; opacity: 0.5;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                <p>No employee records found.</p>
+                                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Add a record or load from JSON.</p>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }
+
+            function showStatus(msg, isError = false) {
+                statusMessage.textContent = msg;
+                statusMessage.style.color = isError ? '#c62828' : '#2e7d32';
+                setTimeout(() => {
+                    statusMessage.textContent = '';
+                }, 3000);
+            }
+
+            // 3. Handle form submission
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const empId = document.getElementById('empId').value.trim();
+                const empName = document.getElementById('empName').value.trim();
+                const department = document.getElementById('department').value.trim();
+                const salary = document.getElementById('salary').value.trim();
+
+                // Check for duplicate ID
+                if (employees.some(emp => emp.empId === empId)) {
+                    showStatus('Error: Employee ID already exists!', true);
+                    return;
+                }
+
+                // Create JS Object
+                const newEmployee = {
+                    empId,
+                    empName,
+                    department,
+                    salary: Number(salary)
+                };
+
+                // Add to array
+                employees.push(newEmployee);
+
+                // Convert to JSON and save to LocalStorage as a fallback/cache
+                const jsonString = JSON.stringify(employees);
+                localStorage.setItem('company_employees', jsonString);
+                console.log("Newly converted JSON payload:", JSON.stringify(newEmployee));
+
+                // Send to backend to update employees.json
+                $.ajax({
+                    url: '/update-json',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(newEmployee),
+                    success: function () {
+                        showStatus('Employee added to JSON file successfully!');
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error saving to server:', error);
+                        showStatus('Employee added locally (Server not running to save JSON)', true);
+                    }
+                });
+
+                // Update UI
+                renderTable();
+                form.reset();
+            });
+
+            // 4. Fetch JSON Data
+            loadBtn.addEventListener('click', () => {
+                const originalText = loadBtn.innerHTML;
+                loadBtn.innerHTML = 'Loading...';
+                loadBtn.disabled = true;
+
+                $.ajax({
+                    url: 'employees.json',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        let addedCount = 0;
+                        const existingIds = new Set(employees.map(e => e.empId));
+
+                        data.forEach(emp => {
+                            if (!existingIds.has(emp.empId)) {
+                                employees.push(emp);
+                                addedCount++;
+                            }
+                        });
+
+                        if (addedCount > 0) {
+                            // Update local storage
+                            localStorage.setItem('company_employees', JSON.stringify(employees));
+                            renderTable();
+                            showStatus(`Loaded ${addedCount} new records from JSON`);
+                        } else {
+                            showStatus('No new records to load from JSON');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('AJAX error:', error);
+                        showStatus('Failed to load JSON (Check CORS if using file://)', true);
+                        alert("Unable to load 'employees.json'. If you are opening this file directly in the browser via 'file://', CORS policies may block the request. Please serve the files using a local web server (like Live Server) to use AJAX properly.");
+                    },
+                    complete: function () {
+                        loadBtn.innerHTML = originalText;
+                        loadBtn.disabled = false;
+                    }
+                });
+            });
+
+            // Initial load
+            loadFromLocalStorage();
         });
     </script>
 </body>
+
 </html>

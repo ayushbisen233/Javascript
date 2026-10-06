@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Order Management</title>
+    <!-- 1. Use the jQuery library through a CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        /* Classic green theme */
+        :root {
+            --primary-green: #2e7d32;
+            --primary-green-hover: #1b5e20;
+            --light-green: #e8f5e9;
+            --accent-green: #4caf50;
+            --text-main: #2c3e50;
+            --text-muted: #546e7a;
+            --bg-body: #f4f9f4;
+            --bg-card: #ffffff;
+            --border-color: #c8e6c9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 24px rgba(46, 125, 50, 0.1);
+            border-top: 6px solid var(--primary-green);
+        }
+
+        h1 {
+            color: var(--primary-green);
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .btn-view {
+            display: block;
+            margin: 0 auto 2rem;
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-view:hover {
+            background-color: var(--primary-green-hover);
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            display: none; /* Hidden initially */
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-green);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--light-green);
+        }
+
+        tr:hover {
+            background-color: #c8e6c9;
+        }
+
+        .status-badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .status-Preparing { background-color: #fff3e0; color: #e65100; }
+        .status-Ready { background-color: #e3f2fd; color: #1565c0; }
+        .status-Delivered { background-color: #e8f5e9; color: #2e7d32; }
+
+        .summary-card {
+            background-color: var(--light-green);
+            border-left: 4px solid var(--primary-green);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            display: none; /* Hidden initially */
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .summary-title {
+            font-weight: 600;
+            color: var(--primary-green);
+        }
+
+        .summary-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        #messageBox {
+            text-align: center;
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 6px;
+            display: none;
+        }
+
+        .error-msg {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Restaurant Orders</h1>
+        <p class="subtitle">Real-time Order Management System</p>
+
+        <!-- 3. Button to view orders -->
+        <button id="viewOrdersBtn" class="btn-view">View Orders</button>
+
+        <div id="messageBox"></div>
+
+        <div class="table-container">
+            <table id="ordersTable">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer Name</th>
+                        <th>Food Item</th>
+                        <th>Quantity</th>
+                        <th>Total Amount</th>
+                        <th>Order Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be loaded here dynamically -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="summarySection" class="summary-card">
+            <div>
+                <!-- 6. Display total number of orders -->
+                <div class="summary-title">Total Orders</div>
+                <div class="summary-value" id="totalOrdersCount">0</div>
+            </div>
+            <div style="text-align: right;">
+                <!-- 7. Total sales amount -->
+                <div class="summary-title">Total Sales Amount</div>
+                <div class="summary-value" id="totalSalesAmount">₹0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            let dataLoaded = false;
+
+            $('#viewOrdersBtn').on('click', function() {
+                // 5. Do not allow duplicate rows if clicked multiple times
+                if (dataLoaded) {
+                    return; 
+                }
+
+                // 2. Retrieve data using $.getJSON()
+                $.getJSON('orders.json')
+                    .done(function(data) {
+                        let totalOrders = 0;
+                        let totalSales = 0;
+
+                        // 4. Use $.each() to process all JSON records
+                        $.each(data, function(index, order) {
+                            // Calculate totals
+                            totalOrders++;
+                            totalSales += order.totalAmount;
+
+                            // Format amount
+                            const formattedAmount = '₹' + order.totalAmount.toFixed(2);
+
+                            // Construct row
+                            const row = `
+                                <tr>
+                                    <td><strong>${order.orderId}</strong></td>
+                                    <td>${order.customerName}</td>
+                                    <td>${order.foodItem}</td>
+                                    <td>${order.quantity}</td>
+                                    <td>${formattedAmount}</td>
+                                    <td><span class="status-badge status-${order.orderStatus.replace(/\s+/g, '')}">${order.orderStatus}</span></td>
+                                </tr>
+                            `;
+                            
+                            // Append to table body
+                            $('#ordersTable tbody').append(row);
+                        });
+
+                        // Display table and summary
+                        $('#ordersTable').fadeIn();
+                        $('#summarySection').css('display', 'flex').hide().fadeIn();
+                        
+                        // Update summary values (6 & 7)
+                        $('#totalOrdersCount').text(totalOrders);
+                        $('#totalSalesAmount').text('₹' + totalSales.toFixed(2));
+
+                        // Mark as loaded to prevent duplicate rows
+                        dataLoaded = true;
+                        
+                        // Optional: update button state
+                        $('#viewOrdersBtn').text('Orders Loaded').prop('disabled', true).css({
+                            'opacity': '0.7',
+                            'cursor': 'not-allowed'
+                        });
+                        
+                        $('#messageBox').hide();
+                    })
+                    .fail(function() {
+                        // 8. Display an appropriate message if orders.json cannot be loaded
+                        $('#messageBox')
+                            .text('Error: Could not load orders.json. Ensure the file exists and you are using a local web server (like Live Server) rather than opening the file directly (file://).')
+                            .addClass('error-msg')
+                            .fadeIn();
+                    });
+            });
+        });
+    </script>
+</body>
+</html>
