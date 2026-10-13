@@ -82,7 +82,10 @@ targetElement.addEventListener(eventType, callbackFunction, options);
 | **Line 393** | `#contact-form` | `'submit'` | Intercepts submission with `e.preventDefault()`, validates, and dispatches. |
 | **Line 445** | `#contact-form` | `'reset'` | Resets all validation classes and character counters when cleared. |
 | **Line 462** | `window` | `'scroll'` | Calculates scroll position and sets `.active` on current section's nav link. |
-| **Lines 489–532** | `#portrait-frame` | `'mouseenter'`, `'mousemove'`, `'mouseleave'`, `'click'`, `'keydown'` | **Dynamic 3D Perspective Tilt**: Tracks cursor across portrait, tilts frame up to 7.5°, follows specular light reflection, and opens modal on click/Enter. |
+| **Lines 205–224** | `.project-card` | `'mousemove'`, `'mouseleave'` | **Project Card 3D Tilt & Luminous Spotlight**: Follows cursor with interactive 3D perspective tilt and radial emerald spotlight (`--mouse-x`, `--mouse-y`). |
+| **Lines 258–272** | `.filter-tab-btn` | `'click'` | **Project Category Filtering**: Filters projects dynamically by category (AI/ML, Web3, Backend, All) with count badges. |
+| **Lines 172–200** | `IntersectionObserver` | `isIntersecting` | **Scroll Reveal Dynamism**: Elements glide into view from the side (`reveal-from-left`, `reveal-from-right`, `reveal-from-bottom`) as the user scrolls. |
+| **Lines 605–648** | `#portrait-frame` | `'mouseenter'`, `'mousemove'`, `'mouseleave'`, `'click'`, `'keydown'` | **Dynamic 3D Perspective Tilt**: Tracks cursor across portrait, tilts frame up to 7.5°, follows specular light reflection, and opens modal on click/Enter. |
 
 ---
 

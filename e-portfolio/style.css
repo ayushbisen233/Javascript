@@ -1307,6 +1307,107 @@ button {
 
 /* ==========================================================================
    Projects Section (Simultaneous Cards Display)
+/* ==========================================================================
+   Scroll Reveal Dynamism (Comes up from side on scroll)
+   ========================================================================== */
+
+.reveal-on-scroll {
+    opacity: 0;
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+/* Comes up from left side */
+.reveal-from-left {
+    transform: translateX(-40px) translateY(24px);
+}
+
+/* Comes up from right side */
+.reveal-from-right {
+    transform: translateX(40px) translateY(24px);
+}
+
+/* Comes up from bottom */
+.reveal-from-bottom {
+    transform: translateY(32px);
+}
+
+/* Active in-view state */
+.reveal-on-scroll.in-view {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* ==========================================================================
+   Projects Dynamic Category Filter Bar
+   ========================================================================== */
+
+.projects-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    justify-content: center;
+    margin-bottom: 2.25rem;
+}
+
+.filter-tab-btn {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 0.45rem 1.05rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    outline: none;
+}
+
+.filter-tab-btn:hover,
+.filter-tab-btn:focus-visible {
+    border-color: var(--emerald-primary);
+    color: var(--text-main);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.filter-tab-btn.active {
+    background-color: var(--bg-subtle);
+    border-color: var(--emerald-primary);
+    color: var(--emerald-hover);
+    box-shadow: 0 0 16px rgba(54, 168, 120, 0.22);
+}
+
+.filter-count {
+    background-color: var(--bg-body);
+    color: var(--text-subtle);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-color);
+    transition: all 0.25s ease;
+}
+
+.filter-tab-btn.active .filter-count {
+    background-color: var(--emerald-primary);
+    color: var(--text-inverse);
+    border-color: var(--emerald-primary);
+}
+
+/* ==========================================================================
+   Project Card Dynamism (Interactive 3D Tilt, Luminous Spotlight, Micro-actions)
    ========================================================================== */
 
 .projects-grid {
@@ -1316,6 +1417,7 @@ button {
 }
 
 .project-card {
+    position: relative;
     background-color: var(--bg-surface);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
@@ -1323,25 +1425,47 @@ button {
     display: flex;
     flex-direction: column;
     box-shadow: var(--shadow-card);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    animation: fadeInSlide 0.4s ease forwards;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
+    transform-style: preserve-3d;
+    overflow: hidden;
 }
 
-@keyframes fadeInSlide {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Dynamic Luminous Cursor Spotlight Follower */
+.project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(420px circle at var(--mouse-x, -200px) var(--mouse-y, -200px), rgba(54, 168, 120, 0.2) 0%, transparent 68%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.project-card:hover::before {
+    opacity: 1;
 }
 
 .project-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
     border-color: var(--emerald-primary);
+    box-shadow: var(--shadow-hover), 0 0 24px rgba(54, 168, 120, 0.2);
+}
+
+/* Ensure card children sit above the luminous spotlight */
+.project-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+.project-card.filter-fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+.project-card.filter-hide {
+    display: none !important;
 }
 
 .project-card-header {

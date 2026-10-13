@@ -162,18 +162,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let allProjects = [];
     const projectsGrid = document.getElementById('projects-grid');
+    let currentProjectFilter = 'all';
+
+    // Global Scroll Observer for entrance animations (comes up from side)
+    let scrollObserver = null;
 
     /**
-     * Simultaneously renders all projects in a clean, elegant grid
+     * Initializes IntersectionObserver for scroll-reveal animations across all sections
      */
-    function renderAllProjects() {
+    function initScrollReveal() {
+        if (!('IntersectionObserver' in window)) {
+            document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('in-view'));
+            return;
+        }
+
+        if (scrollObserver) {
+            scrollObserver.disconnect();
+        }
+
+        scrollObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+            scrollObserver.observe(el);
+        });
+    }
+
+    /**
+     * Simultaneously renders projects in a dynamic grid with side-reveal animation,
+     * interactive 3D cursor tilt, and luminous spotlight follower
+     */
+    function renderAllProjects(filterCategory = 'all') {
         if (!projectsGrid) return;
+        currentProjectFilter = filterCategory;
         projectsGrid.innerHTML = '';
 
-        allProjects.forEach((project, index) => {
+        const filtered = (filterCategory === 'all')
+            ? allProjects
+            : allProjects.filter(p => p.categoryLabel.toLowerCase() === filterCategory.toLowerCase());
+
+        filtered.forEach((project, index) => {
             const card = document.createElement('article');
-            card.className = 'project-card';
-            card.style.animationDelay = `${index * 0.08}s`;
+            // Alternating side-reveal: even cards come up from left, odd cards come up from right!
+            const sideClass = (index % 2 === 0) ? 'reveal-from-left' : 'reveal-from-right';
+            card.className = `project-card reveal-on-scroll ${sideClass}`;
+            card.style.transitionDelay = `${(index % 2) * 0.12}s`;
 
             const tagsHtml = project.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('');
 
@@ -203,7 +245,77 @@ document.addEventListener('DOMContentLoaded', () => {
                 ` : ''}
             `;
 
+            // Dynamic 3D Cursor Tilt & Luminous Spotlight Follower
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Update luminous spotlight CSS custom properties
+                card.style.setProperty('--mouse-x', `${x.toFixed(1)}px`);
+                card.style.setProperty('--mouse-y', `${y.toFixed(1)}px`);
+
+                // Subtle 3D tilt (max ~4.5 degrees)
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotX = ((centerY - y) / centerY) * 4.5;
+                const rotY = ((x - centerX) / centerX) * 4.5;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) translateY(-4px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+
             projectsGrid.appendChild(card);
+
+            // Register card with scroll observer
+            if (scrollObserver) {
+                scrollObserver.observe(card);
+            } else {
+                card.classList.add('in-view');
+            }
+        });
+    }
+
+    /**
+     * Initializes project category filter tabs with dynamic count updates
+     */
+    function initProjectFilters() {
+        const filterButtons = document.querySelectorAll('.filter-tab-btn');
+        if (!filterButtons.length) return;
+
+        // Calculate and update category counts
+        const counts = {
+            'all': allProjects.length,
+            'AI/ML & Patents': allProjects.filter(p => p.categoryLabel.toLowerCase() === 'ai/ml & patents').length,
+            'Web3 & Cloud': allProjects.filter(p => p.categoryLabel.toLowerCase() === 'web3 & cloud').length,
+            'Backend Systems': allProjects.filter(p => p.categoryLabel.toLowerCase() === 'backend systems').length
+        };
+
+        const countAll = document.getElementById('count-all');
+        const countAiml = document.getElementById('count-aiml');
+        const countWeb3 = document.getElementById('count-web3');
+        const countBackend = document.getElementById('count-backend');
+
+        if (countAll) countAll.textContent = counts['all'];
+        if (countAiml) countAiml.textContent = counts['AI/ML & Patents'];
+        if (countWeb3) countWeb3.textContent = counts['Web3 & Cloud'];
+        if (countBackend) countBackend.textContent = counts['Backend Systems'];
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                btn.classList.add('active');
+                btn.setAttribute('aria-selected', 'true');
+
+                const category = btn.getAttribute('data-filter') || 'all';
+                renderAllProjects(category);
+            });
         });
     }
 
@@ -222,7 +334,9 @@ document.addEventListener('DOMContentLoaded', () => {
             console.info('Using fallback project dataset:', err.message);
             allProjects = fallbackProjects;
         } finally {
-            renderAllProjects();
+            initProjectFilters();
+            renderAllProjects('all');
+            initScrollReveal();
         }
     }
 
@@ -533,6 +647,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize portfolio data
+    // Initialize scroll reveal observer immediately for static sections
+    initScrollReveal();
+
+    // Initialize portfolio data and dynamic project cards
     loadPortfolioData();
 });
