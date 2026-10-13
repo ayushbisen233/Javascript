@@ -10,7 +10,60 @@ document.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
     // =========================================================================
-    // 1. Mobile Navigation Toggle
+    // 1. Theme Management (Dark [Emerald + Graphite] primary & Light [Mint Slate])
+    // =========================================================================
+    const themeButtons = {
+        'dark': document.getElementById('btn-dark'),
+        'light': document.getElementById('btn-light')
+    };
+
+    /**
+     * Applies the selected theme and persists it to localStorage
+     * @param {string} themeName - 'dark' | 'light'
+     */
+    function applyTheme(themeName) {
+        const validTheme = (themeName === 'light') ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', validTheme);
+        
+        try {
+            localStorage.setItem('preferredTheme', validTheme);
+        } catch (e) {
+            console.warn('localStorage not accessible for theme persistence');
+        }
+
+        // Update active state on toggle buttons
+        Object.entries(themeButtons).forEach(([key, btn]) => {
+            if (btn) {
+                const isActive = (key === validTheme);
+                btn.classList.toggle('active', isActive);
+                btn.setAttribute('aria-pressed', isActive.toString());
+            }
+        });
+    }
+
+    // Initialize saved theme or default to Dark mode (primary experience)
+    const savedTheme = (function () {
+        try {
+            const stored = localStorage.getItem('preferredTheme');
+            if (stored && ['dark', 'light'].includes(stored)) return stored;
+            return 'dark';
+        } catch (e) {
+            return 'dark';
+        }
+    })();
+    applyTheme(savedTheme);
+
+    // Bind theme switcher event listeners
+    Object.entries(themeButtons).forEach(([key, btn]) => {
+        if (btn) {
+            btn.addEventListener('click', () => {
+                applyTheme(key);
+            });
+        }
+    });
+
+    // =========================================================================
+    // 2. Mobile Navigation Toggle
     // =========================================================================
     const mobileToggle = document.getElementById('mobile-toggle');
     const navMenu = document.getElementById('nav-menu');
@@ -174,10 +227,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================================
-    // 3. Official Resume Dossier Modal
+    // 4. Official Resume Dossier Modal & Print Resume
     // =========================================================================
     const resumeModal = document.getElementById('resume-modal');
     const openResumeButtons = document.querySelectorAll('.open-resume-btn');
+    const printResumeButtons = document.querySelectorAll('.print-resume-btn');
     const resumeCloseBtn = document.getElementById('resume-modal-close');
     const resumeDismissBtn = document.getElementById('resume-dismiss-btn');
 
@@ -195,10 +249,25 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
     }
 
+    function printResume() {
+        // Open resume modal so DOM elements are mounted and ready for printing
+        openResume();
+        setTimeout(() => {
+            window.print();
+        }, 150);
+    }
+
     openResumeButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             openResume();
+        });
+    });
+
+    printResumeButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            printResume();
         });
     });
 
@@ -218,7 +287,174 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // =========================================================================
-    // 4. Active Navigation State on Scroll
+    // 5. Interactive Form Validation (Live Input, Blur, Regex & Submission)
+    // =========================================================================
+    const contactForm = document.getElementById('contact-form');
+    const nameInput = document.getElementById('contact-name');
+    const emailInput = document.getElementById('contact-email');
+    const subjectSelect = document.getElementById('contact-subject');
+    const messageInput = document.getElementById('contact-message');
+    const charCounter = document.getElementById('char-counter');
+    const formAlert = document.getElementById('form-alert');
+    const alertText = document.getElementById('alert-text');
+    const submitBtn = document.getElementById('submit-btn');
+
+    // Email regex validation pattern
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    function validateName() {
+        const group = document.getElementById('group-name');
+        if (!nameInput) return false;
+        const val = nameInput.value.trim();
+        const isValid = val.length >= 3;
+        setFieldState(group, isValid);
+        return isValid;
+    }
+
+    function validateEmail() {
+        const group = document.getElementById('group-email');
+        if (!emailInput) return false;
+        const val = emailInput.value.trim();
+        const isValid = emailRegex.test(val);
+        setFieldState(group, isValid);
+        return isValid;
+    }
+
+    function validateSubject() {
+        const group = document.getElementById('group-subject');
+        if (!subjectSelect) return false;
+        const isValid = subjectSelect.value !== '';
+        setFieldState(group, isValid);
+        return isValid;
+    }
+
+    function validateMessage() {
+        const group = document.getElementById('group-message');
+        if (!messageInput) return false;
+        const val = messageInput.value.trim();
+        const isValid = val.length >= 15;
+        setFieldState(group, isValid);
+        return isValid;
+    }
+
+    function setFieldState(groupElement, isValid) {
+        if (!groupElement) return;
+        if (isValid) {
+            groupElement.classList.add('success');
+            groupElement.classList.remove('error');
+        } else {
+            groupElement.classList.add('error');
+            groupElement.classList.remove('success');
+        }
+    }
+
+    function clearFieldState(groupElement) {
+        if (!groupElement) return;
+        groupElement.classList.remove('success', 'error');
+    }
+
+    // Live validation event listeners (input & blur)
+    if (nameInput) {
+        nameInput.addEventListener('input', () => {
+            if (nameInput.value.length > 0) validateName();
+            else clearFieldState(document.getElementById('group-name'));
+        });
+        nameInput.addEventListener('blur', validateName);
+    }
+
+    if (emailInput) {
+        emailInput.addEventListener('input', () => {
+            if (emailInput.value.length > 0) validateEmail();
+            else clearFieldState(document.getElementById('group-email'));
+        });
+        emailInput.addEventListener('blur', validateEmail);
+    }
+
+    if (subjectSelect) {
+        subjectSelect.addEventListener('change', validateSubject);
+        subjectSelect.addEventListener('blur', validateSubject);
+    }
+
+    if (messageInput) {
+        messageInput.addEventListener('input', () => {
+            const currentLen = messageInput.value.length;
+            if (charCounter) {
+                charCounter.textContent = `${currentLen} / 500`;
+                charCounter.style.color = currentLen > 450 ? 'var(--status-error)' : 'var(--text-subtle)';
+            }
+            if (currentLen > 0) validateMessage();
+            else clearFieldState(document.getElementById('group-message'));
+        });
+        messageInput.addEventListener('blur', validateMessage);
+    }
+
+    // Form submit listener
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const isNameValid = validateName();
+            const isEmailValid = validateEmail();
+            const isSubjectValid = validateSubject();
+            const isMessageValid = validateMessage();
+
+            if (!isNameValid || !isEmailValid || !isSubjectValid || !isMessageValid) {
+                if (formAlert) {
+                    formAlert.style.display = 'flex';
+                    formAlert.style.backgroundColor = 'var(--status-error-bg)';
+                    formAlert.style.color = 'var(--status-error)';
+                    alertText.textContent = 'Please review and resolve the flagged input errors above.';
+                }
+                return;
+            }
+
+            // Simulate message transmission
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = `<span>Transmitting...</span>`;
+
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+
+                    if (formAlert) {
+                        formAlert.style.display = 'flex';
+                        formAlert.style.backgroundColor = 'var(--status-success-bg)';
+                        formAlert.style.color = 'var(--status-success)';
+                        alertText.textContent = `Thank you, ${nameInput.value.trim()}! Your communication has been dispatched. Ayush will follow up shortly.`;
+                    }
+
+                    // Reset form and validation styles
+                    contactForm.reset();
+                    ['group-name', 'group-email', 'group-subject', 'group-message'].forEach(id => {
+                        clearFieldState(document.getElementById(id));
+                    });
+
+                    if (charCounter) charCounter.textContent = '0 / 500';
+
+                    // Auto dismiss alert after 6 seconds
+                    setTimeout(() => {
+                        if (formAlert) formAlert.style.display = 'none';
+                    }, 6000);
+                }, 750);
+            }
+        });
+
+        // Form reset listener
+        contactForm.addEventListener('reset', () => {
+            setTimeout(() => {
+                ['group-name', 'group-email', 'group-subject', 'group-message'].forEach(id => {
+                    clearFieldState(document.getElementById(id));
+                });
+                if (charCounter) charCounter.textContent = '0 / 500';
+                if (formAlert) formAlert.style.display = 'none';
+            }, 50);
+        });
+    }
+
+    // =========================================================================
+    // 6. Active Navigation State on Scroll
     // =========================================================================
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -242,6 +478,60 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // =========================================================================
+    // 7. Hero Portrait Dynamic 3D Tilt & Specular Lighting Interaction
+    // =========================================================================
+    const portraitFrame = document.getElementById('portrait-frame');
+    const portraitSheen = document.getElementById('portrait-sheen');
+
+    if (portraitFrame && portraitSheen) {
+        let isHovering = false;
+
+        portraitFrame.addEventListener('mouseenter', () => {
+            isHovering = true;
+            portraitFrame.style.transition = 'transform 0.12s ease-out, box-shadow 0.3s ease, border-color 0.3s ease';
+        });
+
+        portraitFrame.addEventListener('mousemove', (e) => {
+            if (!isHovering) return;
+            const rect = portraitFrame.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            // Constrain 3D tilt to elegant angle (max ~7.5 degrees)
+            const rotateX = ((centerY - y) / centerY) * 7.5;
+            const rotateY = ((x - centerX) / centerX) * 7.5;
+
+            portraitFrame.style.transform = `perspective(700px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.03, 1.03, 1.03)`;
+
+            const pctX = ((x / rect.width) * 100).toFixed(1);
+            const pctY = ((y / rect.height) * 100).toFixed(1);
+            portraitSheen.style.background = `radial-gradient(circle at ${pctX}% ${pctY}%, rgba(255, 255, 255, 0.28) 0%, rgba(54, 168, 120, 0.14) 35%, transparent 70%)`;
+        });
+
+        portraitFrame.addEventListener('mouseleave', () => {
+            isHovering = false;
+            portraitFrame.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease';
+            portraitFrame.style.transform = 'perspective(700px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            portraitSheen.style.background = '';
+        });
+
+        // Clicking portrait opens official resume / credentials modal
+        portraitFrame.addEventListener('click', () => {
+            openResume();
+        });
+
+        portraitFrame.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openResume();
+            }
+        });
+    }
 
     // Initialize portfolio data
     loadPortfolioData();
