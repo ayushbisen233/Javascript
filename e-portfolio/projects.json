@@ -1,0 +1,76 @@
+[
+  {
+    "id": "mateq",
+    "title": "MateQ — Full-Stack Web3 Competitive Coding Platform",
+    "subtitle": "Live competitive coding platform with verifiable on-chain credentials",
+    "period": "2025 – Present",
+    "category": "web3",
+    "categoryLabel": "Web3 & Cloud",
+    "badge": "Team Project (3 Members)",
+    "role": "Lead Backend Architect & Smart Contract Designer",
+    "github": "https://github.com/SmokerTobi/MateQ",
+    "tags": ["Next.js 14", "Node.js", "Express", "TypeScript", "Solidity", "Polygon", "Web3"],
+    "description": "Full-stack competitive coding platform where developers compete in synchronized live coding matches to earn recruiter-verifiable skill credentials.",
+    "highlights": [
+      "Built full-stack architecture using Next.js 14, Node.js/Express, and TypeScript.",
+      "Designed and deployed Solidity smart contracts on Polygon to mint non-transferable, ELO-style skill tokens as an on-chain, recruiter-verifiable alternative to self-reported skill claims.",
+      "Engineered wallet-free demo mode with simulated bot opponents, enabling instant end-to-end product onboarding without requiring crypto setup."
+    ],
+    "metrics": "Polygon Mainnet Contracts • Simulated Bot Matchmaking • ELO Credential Minting"
+  },
+  {
+    "id": "mira6g",
+    "title": "MIRA6G — RIS-Assisted mmWave 6G Simulation Framework",
+    "subtitle": "Modular Python framework for RIS-assisted 6G/mmWave networks",
+    "period": "2025",
+    "category": "ai-patents",
+    "categoryLabel": "AI/ML & Patents",
+    "badge": "Patent Filed",
+    "patentNumber": "App. No. 202621048318 A (Indian Patent Office)",
+    "github": "https://github.com/ayushbisen233",
+    "tags": ["Python", "TensorFlow", "6G/mmWave", "RIS", "Digital Twin", "Simulation"],
+    "description": "Modular Python framework simulating Reconfigurable Intelligent Surface (RIS) assisted 6G/mmWave wireless networks across 4 system configurations.",
+    "highlights": [
+      "Incorporated AI-driven latency prediction, digital-twin environment modelling, and an automated pipeline generating 14 IEEE-style SVG evaluation plots.",
+      "Benchmarked AI + digital-twin against no-DT/no-AI baseline: achieved +23% throughput, -11% latency, and +12% fairness improvement in dense wireless environments.",
+      "Extended with learning-based consistency constraints for adaptive RIS configuration and cross-layer (PHY/MAC/network) coordination across multi-RIS THz scenarios."
+    ],
+    "metrics": "+23% Throughput • -11% Latency • +12% Fairness • 14 IEEE Plots"
+  },
+  {
+    "id": "temple-security",
+    "title": "Digital Twin for Temple Security & Management",
+    "subtitle": "Real-time automated computer-vision security and crowd telemetry",
+    "period": "2024",
+    "category": "ai-patents",
+    "categoryLabel": "AI/ML & Patents",
+    "badge": "Patent Filed",
+    "patentNumber": "App. No. 202521124784 A (Indian Patent Office)",
+    "github": "https://github.com/ayushbisen233",
+    "tags": ["Computer Vision", "Python", "Deep Learning", "Real-Time Telemetry", "Surveillance"],
+    "description": "Real-time edge computer-vision pipeline tailored for large-scale sacred sites and crowded venues to monitor safety and security autonomously.",
+    "highlights": [
+      "Built real-time computer-vision pipeline for crowd density estimation, violence detection, and abandoned-object identification from live multi-camera feeds.",
+      "Implemented automated instant alerting to notify security personnel of detected hazards or anomalies, significantly cutting manual feed-monitoring burden."
+    ],
+    "metrics": "Live Video Analytics • Instant Threat Dispatch • Multi-Class Incident Detection"
+  },
+  {
+    "id": "doctranx",
+    "title": "DocTranx — AI-Powered Document Transformation Platform",
+    "subtitle": "Event-driven microservices platform for structured UDOM conversion",
+    "period": "Jul 2026",
+    "category": "backend",
+    "categoryLabel": "Backend Systems",
+    "badge": "AEIV Global Internship",
+    "role": "Backend Engineering Intern",
+    "github": "https://github.com/ayushbisen233",
+    "tags": ["Apache Kafka", "PostgreSQL", "Redis", "AWS S3", "Docker", "Kubernetes", "Microservices"],
+    "description": "Enterprise event-driven microservices pipeline that parses, OCR-processes, and converts high-volume documents into structured Universal DOM.",
+    "highlights": [
+      "Architected distributed event-driven microservices pipeline with Apache Kafka, PostgreSQL, Redis, and AWS S3 running in Docker & Kubernetes.",
+      "Engineered parsing and OCR pipeline converting raw documents into structured Universal DOM (JSON/XML) allowing arbitrary in-browser edits and seamless re-export to PDF, DOCX, and PPTX."
+    ],
+    "metrics": "High-Throughput UDOM Pipeline • Multi-Format Export • Kafka Event Stream"
+  }
+]

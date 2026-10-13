@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayush Sunil Bisen | E-Portfolio & Engineering Showcase</title>
+    <meta name="description" content="E-Portfolio of Ayush Sunil Bisen — CSE (AI & ML) Undergraduate at SIT Nagpur, Patent Applicant (6G/RIS Simulation & Computer Vision Security), and Backend Systems Researcher.">
+    <meta name="author" content="Ayush Sunil Bisen">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Notification Banner -->
+    <aside class="top-banner" role="complementary" aria-label="Status notice">
+        <div class="banner-inner">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span>Available for 2026–2027 Research & Backend / Machine Learning Engineering Roles</span>
+            <a href="mailto:ayushbisen321@gmail.com" class="banner-link">ayushbisen321@gmail.com &rarr;</a>
+        </div>
+    </aside>
+
+    <!-- Header & Navigation -->
+    <header class="site-header" id="header">
+        <div class="header-container">
+            <a href="#hero" class="brand-logo" aria-label="Ayush Bisen Home">
+                <span class="logo-badge">AB</span>
+                <span class="logo-text">Ayush <span class="logo-accent">Bisen</span></span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
+                <ul class="nav-list">
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#patents" class="nav-link">Patents <span class="nav-pill">2</span></a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                </ul>
+            </nav>
+
+            <!-- Actions: Resume & Mobile Menu Button -->
+            <div class="header-actions">
+                <a href="#resume-modal" class="btn btn-outline btn-sm open-resume-btn" id="view-resume-btn">
+                    <svg viewBox="0 0 24 24" class="icon-inline" aria-hidden="true">
+                        <path fill="currentColor" d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2M18 20H6V4H13V9H18V20M16 11V13H8V11H16M16 15V17H8V15H16Z"/>
+                    </svg>
+                    Resume
+                </a>
+
+                <!-- Mobile Hamburger Button -->
+                <button type="button" class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-icon">🌿</span>
+                        <span>Symbiosis Institute of Technology, Nagpur &bull; CSE (AI & ML)</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        AYUSH SUNIL BISEN
+                    </h1>
+                    <p class="hero-role">
+                        Systems Researcher, Backend Architect & Machine Learning Engineer
+                    </p>
+
+                    <p class="hero-description">
+                        Building next-generation distributed systems, 6G/RIS wireless simulation frameworks, and real-time computer-vision telemetry. Author of <strong>2 filed Indian patent applications</strong> with a strong foundation in event-driven microservices, AI modelling, and decentralized infrastructure.
+                    </p>
+
+                    <div class="hero-meta-badges">
+                        <span class="meta-tag"><span class="tag-dot"></span> 2x Patent Applicant (IPO)</span>
+                        <span class="meta-tag"><span class="tag-dot"></span> CGPA: 8.0 / 10</span>
+                        <span class="meta-tag"><span class="tag-dot"></span> Nagpur, Maharashtra</span>
+                        <span class="meta-tag"><span class="tag-dot"></span> Graduating 2028</span>
+                    </div>
+
+
+                    <!-- Social / Link Icons -->
+                    <div class="social-links-row">
+                        <a href="https://github.com/ayushbisen233" target="_blank" rel="noopener noreferrer" class="social-link-btn" title="GitHub Profile: ayushbisen233">
+                            <svg viewBox="0 0 24 24" class="social-svg" aria-hidden="true">
+                                <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+                            </svg>
+                            <span>github.com/ayushbisen233</span>
+                        </a>
+
+                        <a href="https://linkedin.com/in/ayushbisen233" target="_blank" rel="noopener noreferrer" class="social-link-btn" title="LinkedIn Profile">
+                            <svg viewBox="0 0 24 24" class="social-svg" aria-hidden="true">
+                                <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76c.92 0 1.67-.75 1.67-1.67A1.67 1.67 0 0 0 6.46 5.42a1.67 1.67 0 0 0-1.67 1.67c0 .92.75 1.67 1.67 1.67m1.39 9.74v-8.37H5.07v8.37h2.78z"/>
+                            </svg>
+                            <span>linkedin.com/in/ayushbisen233</span>
+                        </a>
+
+                        <a href="mailto:ayushbisen321@gmail.com" class="social-link-btn" title="Direct Email">
+                            <svg viewBox="0 0 24 24" class="social-svg" aria-hidden="true">
+                                <path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                            <span>ayushbisen321@gmail.com</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Live Metrics Card -->
+                <div class="hero-stats-card">
+                    <div class="stats-card-header">
+                        <span class="card-chip">RESEARCH & IMPACT METRICS</span>
+                        <span class="card-status-pulse">Active Verified</span>
+                    </div>
+
+                    <div class="metrics-grid" id="metrics-grid">
+                        <div class="metric-item">
+                            <span class="metric-number">2</span>
+                            <span class="metric-label">Patents Filed</span>
+                            <span class="metric-sub">Indian Patent Office</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-number">8.0</span>
+                            <span class="metric-label">Academic CGPA</span>
+                            <span class="metric-sub">SIT Nagpur (B.Tech AI & ML)</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-number">+23%</span>
+                            <span class="metric-label">6G Throughput Boost</span>
+                            <span class="metric-sub">MIRA6G RIS Framework</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-number">14</span>
+                            <span class="metric-label">IEEE Evaluation Plots</span>
+                            <span class="metric-sub">Automated Vector Pipeline</span>
+                        </div>
+                    </div>
+
+                    <div class="stats-card-footer">
+                        <div class="focus-chip-list">
+                            <span class="focus-pill">Distributed Microservices</span>
+                            <span class="focus-pill">Deep Learning</span>
+                            <span class="focus-pill">Digital Twin Simulation</span>
+                            <span class="focus-pill">Solidity / Web3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section about-section" id="about">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-kicker">BACKGROUND & PHILOSOPHY</span>
+                    <h2 class="section-title">Bridging Systems Engineering & Machine Learning</h2>
+                    <p class="section-subtitle">Dedicated to creating robust real-world systems with rigorous architectural design and verifiable computational impact.</p>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-card card-elevated">
+                        <div class="card-icon-bubble">
+                            <svg viewBox="0 0 24 24" class="feature-icon" aria-hidden="true"><path fill="currentColor" d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+                        </div>
+                        <h3>Academic Foundation</h3>
+                        <p>Pursuing a Bachelor of Technology in Computer Science & Engineering with specialization in AI & Machine Learning at <strong>Symbiosis Institute of Technology, Nagpur</strong> (CGPA: 8.0/10, Class of 2028).</p>
+                        <div class="coursework-tags">
+                            <span class="mini-tag">Data Structures & Algorithms</span>
+                            <span class="mini-tag">OOP</span>
+                            <span class="mini-tag">DBMS</span>
+                            <span class="mini-tag">Computer Networks</span>
+                            <span class="mini-tag">Compiler Construction</span>
+                            <span class="mini-tag">Machine Learning</span>
+                        </div>
+                    </div>
+
+                    <div class="about-card card-elevated">
+                        <div class="card-icon-bubble">
+                            <svg viewBox="0 0 24 24" class="feature-icon" aria-hidden="true"><path fill="currentColor" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/></svg>
+                        </div>
+                        <h3>Research & Innovations</h3>
+                        <p>Authored and filed 2 patent applications with the <strong>Indian Patent Office</strong> spanning 6G telecommunication network simulations with digital twins, and edge-native computer vision pipelines for live public crowd safety.</p>
+                        <div class="patent-pill-row">
+                            <span class="mini-tag patent-highlight">IPO App. 202621048318 A</span>
+                            <span class="mini-tag patent-highlight">IPO App. 202521124784 A</span>
+                        </div>
+                    </div>
+
+                    <div class="about-card card-elevated">
+                        <div class="card-icon-bubble">
+                            <svg viewBox="0 0 24 24" class="feature-icon" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                        </div>
+                        <h3>Production Backend & Web3</h3>
+                        <p>Experienced in high-throughput microservices using <strong>Apache Kafka, Redis, PostgreSQL, Docker, and Kubernetes</strong>. Architected decentralized skill credential minting on Polygon with wallet-free bot battle simulators.</p>
+                        <div class="coursework-tags">
+                            <span class="mini-tag">Microservices</span>
+                            <span class="mini-tag">Kafka</span>
+                            <span class="mini-tag">Solidity</span>
+                            <span class="mini-tag">Polygon</span>
+                            <span class="mini-tag">Next.js 14</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Patents Section -->
+        <section class="section patents-section" id="patents">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-kicker">INTELLECTUAL PROPERTY</span>
+                    <h2 class="section-title">Patents & Deep-Tech Research</h2>
+                    <p class="section-subtitle">Filed with the Indian Patent Office — tackling next-gen wireless performance and autonomous spatial safety.</p>
+                </div>
+
+                <div class="patents-grid">
+                    <!-- Patent 1 -->
+                    <article class="patent-card card-elevated">
+                        <div class="patent-badge-header">
+                            <span class="patent-official-badge">
+                                <svg viewBox="0 0 24 24" class="badge-icon-sm" aria-hidden="true"><path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+                                Indian Patent Office &bull; Filed 2025
+                            </span>
+                            <span class="patent-id">App. No. 202621048318 A</span>
+                        </div>
+
+                        <h3 class="patent-heading">MIRA6G: RIS-Assisted mmWave 6G Simulation Framework</h3>
+                        <p class="patent-abstract">
+                            A modular Python research framework simulating Reconfigurable Intelligent Surface (RIS) assisted 6G/mmWave wireless networks across four configurations. Integrates AI-driven latency prediction, digital-twin environment modelling, and learning-based cross-layer coordination.
+                        </p>
+
+                        <div class="patent-metrics-row">
+                            <div class="patent-stat">
+                                <span class="stat-value">+23%</span>
+                                <span class="stat-caption">Throughput Boost</span>
+                            </div>
+                            <div class="patent-stat">
+                                <span class="stat-value">-11%</span>
+                                <span class="stat-caption">Latency Reduction</span>
+                            </div>
+                            <div class="patent-stat">
+                                <span class="stat-value">+12%</span>
+                                <span class="stat-caption">Fairness Gain</span>
+                            </div>
+                            <div class="patent-stat">
+                                <span class="stat-value">14</span>
+                                <span class="stat-caption">IEEE SVG Plots</span>
+                            </div>
+                        </div>
+
+                        <ul class="patent-features-list">
+                            <li><strong>AI + Digital-Twin Benchmarking:</strong> Evaluated against a no-DT/no-AI baseline under dense user scenarios, confirming significant physical layer improvements.</li>
+                            <li><strong>Consistency Constraints:</strong> Formulated learning-based consistency parameters for adaptive multi-RIS configuration across complex THz channels.</li>
+                            <li><strong>Automated Evaluation:</strong> Built end-to-end telemetry pipeline producing 14 IEEE-standard vector figures for publication-grade validation.</li>
+                        </ul>
+
+                        <div class="patent-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">6G / mmWave</span>
+                            <span class="tech-tag">Reconfigurable Intelligent Surfaces</span>
+                            <span class="tech-tag">Digital Twin</span>
+                            <span class="tech-tag">TensorFlow</span>
+                        </div>
+                    </article>
+
+                    <!-- Patent 2 -->
+                    <article class="patent-card card-elevated">
+                        <div class="patent-badge-header">
+                            <span class="patent-official-badge">
+                                <svg viewBox="0 0 24 24" class="badge-icon-sm" aria-hidden="true"><path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+                                Indian Patent Office &bull; Filed 2024
+                            </span>
+                            <span class="patent-id">App. No. 202521124784 A</span>
+                        </div>
+
+                        <h3 class="patent-heading">Digital Twin for Temple Security & Management</h3>
+                        <p class="patent-abstract">
+                            An edge-native, automated computer-vision framework developed for large religious complexes, heritage sites, and massive assembly locations to predict crowd surges, detect aggressive behaviors, and safeguard public infrastructure in real time.
+                        </p>
+
+                        <div class="patent-metrics-row">
+                            <div class="patent-stat">
+                                <span class="stat-value">Real-Time</span>
+                                <span class="stat-caption">Multi-Camera Feeds</span>
+                            </div>
+                            <div class="patent-stat">
+                                <span class="stat-value">Instant</span>
+                                <span class="stat-caption">Automated Dispatch</span>
+                            </div>
+                            <div class="patent-stat">
+                                <span class="stat-value">3+ Core</span>
+                                <span class="stat-caption">Vision Detectors</span>
+                            </div>
+                        </div>
+
+                        <ul class="patent-features-list">
+                            <li><strong>Multi-Hazard CV Pipeline:</strong> Continuous inference engine providing crowd density estimation, violence detection, and unattended baggage identification.</li>
+                            <li><strong>Automated Incident Alerting:</strong> Triggers instantaneous alarms for on-ground security personnel, drastically cutting down manual screen monitoring.</li>
+                            <li><strong>Digital Twin Synchronization:</strong> Maps camera telemetry to a spatial twin model for real-time corridor flow optimization and bottleneck alerts.</li>
+                        </ul>
+
+                        <div class="patent-tags">
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">Deep Learning</span>
+                            <span class="tech-tag">Real-Time Telemetry</span>
+                            <span class="tech-tag">Automated Alerting</span>
+                            <span class="tech-tag">Python / OpenCV</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Showcase Section (Simultaneous Display) -->
+        <section class="section projects-section" id="projects">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-kicker">FEATURED WORK</span>
+                    <h2 class="section-title">Engineering Projects & Implementations</h2>
+                    <p class="section-subtitle">Full-stack platforms, deep-tech research, and distributed systems.</p>
+                </div>
+
+                <!-- Projects Dynamic Container (All Projects Displayed Simultaneously) -->
+                <div class="projects-grid" id="projects-grid">
+                    <!-- Project Cards will be dynamically injected by script.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience & Education Section -->
+        <section class="section experience-section" id="experience">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-kicker">CAREER & ACADEMIA</span>
+                    <h2 class="section-title">Experience & Education</h2>
+                    <p class="section-subtitle">Hands-on enterprise microservices and strong theoretical computer science grounding.</p>
+                </div>
+
+                <div class="timeline-grid">
+                    <!-- Column 1: Work Experience -->
+                    <div class="timeline-column">
+                        <div class="column-title-badge">
+                            <svg viewBox="0 0 24 24" class="column-icon" aria-hidden="true"><path fill="currentColor" d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+                            <span>Professional Experience</span>
+                        </div>
+
+                        <div class="timeline-card card-elevated">
+                            <div class="timeline-header">
+                                <div>
+                                    <h3 class="timeline-role">Backend Engineering Intern</h3>
+                                    <h4 class="timeline-org">AEIV Global</h4>
+                                </div>
+                                <span class="timeline-time">Jul 2026 (1 Month)</span>
+                            </div>
+
+                            <p class="timeline-project-name"><strong>Project: DocTranx</strong> — AI-Powered Enterprise Document Transformation Platform</p>
+
+                            <ul class="timeline-bullets">
+                                <li>Led backend architecture for DocTranx: designed a scalable event-driven microservices pipeline processing high-volume document ingestion.</li>
+                                <li>Leveraged <strong>Apache Kafka</strong> for resilient messaging, <strong>PostgreSQL</strong> for relational data, <strong>Redis</strong> for low-latency caching, and <strong>AWS S3</strong> for secure binary artifact persistence.</li>
+                                <li>Containerized all microservices using <strong>Docker</strong> and managed orchestration with <strong>Kubernetes</strong>.</li>
+                                <li>Engineered OCR parsing workflows converting unstructured files into a structured <strong>UDOM (JSON/XML)</strong> for interactive editing and high-fidelity re-export to PDF, DOCX, and PPTX formats.</li>
+                            </ul>
+
+                            <div class="tech-tag-row">
+                                <span class="tech-tag">Apache Kafka</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">Redis</span>
+                                <span class="tech-tag">AWS S3</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">Kubernetes</span>
+                                <span class="tech-tag">UDOM / OCR</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Education -->
+                    <div class="timeline-column">
+                        <div class="column-title-badge">
+                            <svg viewBox="0 0 24 24" class="column-icon" aria-hidden="true"><path fill="currentColor" d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+                            <span>Education</span>
+                        </div>
+
+                        <div class="timeline-card card-elevated">
+                            <div class="timeline-header">
+                                <div>
+                                    <h3 class="timeline-role">B.Tech in Computer Science & Engineering</h3>
+                                    <h4 class="timeline-org">Symbiosis Institute of Technology, Nagpur</h4>
+                                </div>
+                                <span class="timeline-time">2024 – 2028 (Expected)</span>
+                            </div>
+
+                            <div class="grade-pill-wrapper">
+                                <span class="grade-badge">CGPA: <strong>8.0 / 10</strong></span>
+                                <span class="spec-badge">Specialization: Artificial Intelligence & Machine Learning</span>
+                            </div>
+
+                            <div class="coursework-block">
+                                <span class="block-title">Relevant Core Coursework:</span>
+                                <div class="coursework-grid">
+                                    <div class="course-chip">Data Structures & Algorithms</div>
+                                    <div class="course-chip">Object-Oriented Programming (OOP)</div>
+                                    <div class="course-chip">Database Management Systems (DBMS)</div>
+                                    <div class="course-chip">Computer Networks</div>
+                                    <div class="course-chip">Compiler Construction</div>
+                                    <div class="course-chip">Machine Learning & Deep Neural Nets</div>
+                                </div>
+                            </div>
+
+                            <div class="location-stamp">
+                                <span>📍 Nagpur, Maharashtra, India</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills Matrix -->
+        <section class="section skills-section" id="skills">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-kicker">CORE COMPETENCIES</span>
+                    <h2 class="section-title">Technical Skills Matrix</h2>
+                    <p class="section-subtitle">Curated toolkit covering low-level languages, distributed architectures, and machine learning toolchains.</p>
+                </div>
+
+                <div class="skills-categories-grid">
+                    <!-- Languages -->
+                    <div class="skill-category-card card-elevated">
+                        <div class="skill-category-header">
+                            <span class="cat-icon">💻</span>
+                            <h3>Languages</h3>
+                        </div>
+                        <ul class="skill-items-list">
+                            <li><span class="skill-name">Python</span> <span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">C++</span> <span class="skill-level">Proficient</span></li>
+                            <li><span class="skill-name">TypeScript</span> <span class="skill-level">Proficient</span></li>
+                            <li><span class="skill-name">SQL</span> <span class="skill-level">Proficient</span></li>
+                            <li><span class="skill-name">HTML / CSS / JS</span> <span class="skill-level">Proficient</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Web & Backend -->
+                    <div class="skill-category-card card-elevated">
+                        <div class="skill-category-header">
+                            <span class="cat-icon">⚡</span>
+                            <h3>Web & Backend</h3>
+                        </div>
+                        <ul class="skill-items-list">
+                            <li><span class="skill-name">Node.js / Express</span> <span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Next.js (v14 App Router)</span> <span class="skill-level">Proficient</span></li>
+                            <li><span class="skill-name">RESTful APIs & Microservices</span> <span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Apache Kafka</span> <span class="skill-level">Proficient</span></li>
+                            <li><span class="skill-name">Solidity / Smart Contracts</span> <span class="skill-level">Intermediate</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- AI / ML -->
+                    <div class="skill-category-card card-elevated">
+                        <div class="skill-category-header">
+                            <span class="cat-icon">🧠</span>
+                            <h3>AI & Machine Learning</h3>
+                        </div>
+                        <ul class="skill-items-list">
+                            <li><span class="skill-name">TensorFlow</span> <span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Computer Vision (OpenCV)</span> <span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">NumPy & Pandas</span> <span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Matplotlib & Data Viz</span> <span class="skill-level">Proficient</span></li>
+                            <li><span class="skill-name">Deep Neural Networks</span> <span class="skill-level">Proficient</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Databases & Infrastructure -->
+                    <div class="skill-category-card card-elevated">
+                        <div class="skill-category-header">
+                            <span class="cat-icon">🛠️</span>
+                            <h3>Databases & DevOps</h3>
+                        </div>
+                        <ul class="skill-items-list">
+                            <li><span class="skill-name">PostgreSQL</span> <span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Redis Caching</span> <span class="skill-level">Proficient</span></li>
+                            <li><span class="skill-name">Docker Containerization</span> <span class="skill-level">Proficient</span></li>
+                            <li><span class="skill-name">Kubernetes</span> <span class="skill-level">Intermediate</span></li>
+                            <li><span class="skill-name">AWS S3 & Cloud Storage</span> <span class="skill-level">Proficient</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Core CS -->
+                    <div class="skill-category-card card-elevated">
+                        <div class="skill-category-header">
+                            <span class="cat-icon">📐</span>
+                            <h3>Core CS & Methodologies</h3>
+                        </div>
+                        <ul class="skill-items-list">
+                            <li><span class="skill-name">Data Structures & Algorithms</span> <span class="skill-level">Strong</span></li>
+                            <li><span class="skill-name">Object Oriented Programming</span> <span class="skill-level">Strong</span></li>
+                            <li><span class="skill-name">Database Management (DBMS)</span> <span class="skill-level">Strong</span></li>
+                            <li><span class="skill-name">Compiler Construction</span> <span class="skill-level">Academics</span></li>
+                            <li><span class="skill-name">Git & GitHub Workflows</span> <span class="skill-level">Proficient</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <span class="brand-monogram">AB</span>
+                    <div>
+                        <span class="footer-name">Ayush Sunil Bisen</span>
+                        <p class="footer-desc">Systems Researcher & Backend Engineer &bull; SIT Nagpur</p>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <a href="#hero">Back to Top</a>
+                    <a href="#about">About</a>
+                    <a href="#patents">Patents</a>
+                    <a href="#projects">Projects</a>
+                    <a href="https://github.com/ayushbisen233" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://linkedin.com/in/ayushbisen233" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ayush Sunil Bisen. Classic Green Theme.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Interactive Resume Modal -->
+    <div class="modal-overlay" id="resume-modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-header">
+                <div>
+                    <span class="modal-category">Dossier Overview</span>
+                    <h2 class="modal-title">Ayush Sunil Bisen — Official Resume</h2>
+                </div>
+                <button type="button" class="modal-close-btn" id="resume-modal-close" aria-label="Close resume modal">&times;</button>
+            </div>
+
+            <div class="modal-body resume-body" id="resume-modal-content">
+                <div class="resume-sheet">
+                    <div class="resume-sheet-header">
+                        <h1>AYUSH SUNIL BISEN</h1>
+                        <p class="resume-contact-line">Nagpur, Maharashtra &bull; ayushbisen321@gmail.com &bull; <a href="https://linkedin.com/in/ayushbisen233" target="_blank">LinkedIn</a> &bull; <a href="https://github.com/ayushbisen233" target="_blank">GitHub</a></p>
+                    </div>
+
+                    <div class="resume-section">
+                        <h2>EDUCATION</h2>
+                        <div class="resume-item">
+                            <div class="resume-item-top">
+                                <strong>Symbiosis Institute of Technology, Nagpur</strong>
+                                <em>Expected Graduation: 2028</em>
+                            </div>
+                            <p>B.Tech in Computer Science & Engineering (AI & ML) &bull; CGPA: 8.0 / 10</p>
+                            <p class="resume-sub"><strong>Relevant Coursework:</strong> Data Structures & Algorithms, OOP, DBMS, Computer Networks, Compiler Construction, Machine Learning</p>
+                        </div>
+                    </div>
+
+                    <div class="resume-section">
+                        <h2>TECHNICAL SKILLS</h2>
+                        <ul class="resume-bullets-list">
+                            <li><strong>Languages:</strong> Python, C++, TypeScript, SQL, HTML</li>
+                            <li><strong>Web & Backend:</strong> Node.js, Next.js, REST APIs, Apache Kafka, Microservices</li>
+                            <li><strong>AI / ML:</strong> TensorFlow, NumPy, Pandas, Matplotlib, Computer Vision, Deep Learning</li>
+                            <li><strong>Databases & Infra:</strong> PostgreSQL, Redis, AWS S3, Docker, Kubernetes</li>
+                            <li><strong>Core CS & Tools:</strong> Data Structures & Algorithms, OOP, DBMS, Git/GitHub, Compiler Construction</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-section">
+                        <h2>PROJECTS</h2>
+                        <div class="resume-item">
+                            <div class="resume-item-top">
+                                <strong>MateQ &mdash; Full-Stack Web3 Competitive Coding Platform</strong>
+                                <em>2025 &ndash; Present</em>
+                            </div>
+                            <p class="resume-sub">Team project (3 members) &bull; Owned backend architecture & smart contract design &bull; <a href="https://github.com/SmokerTobi/MateQ" target="_blank">GitHub</a></p>
+                            <ul class="resume-bullets-list">
+                                <li>Built a full-stack platform (Next.js 14, Node.js/Express, TypeScript) where developers compete in live coding matches to earn verifiable skill credentials.</li>
+                                <li>Designed and deployed Solidity smart contracts on Polygon to mint non-transferable, ELO-style skill tokens as an on-chain, recruiter-verifiable alternative to self-reported skill claims.</li>
+                                <li>Built a wallet-free demo mode with simulated bot opponents, enabling end-to-end product testing without requiring real crypto transactions.</li>
+                            </ul>
+                        </div>
+
+                        <div class="resume-item">
+                            <div class="resume-item-top">
+                                <strong>MIRA6G &mdash; RIS-Assisted mmWave 6G Simulation Framework</strong>
+                                <em>2025</em>
+                            </div>
+                            <p class="resume-sub"><strong>Patent Application Filed, Indian Patent Office</strong> &mdash; App. No. 202621048318 A</p>
+                            <ul class="resume-bullets-list">
+                                <li>Built a modular Python framework simulating RIS-assisted 6G/mmWave networks across 4 system configurations, with AI-driven latency prediction, digital-twin environment modelling, and an automated pipeline producing 14 IEEE-style SVG figures for publication-grade evaluation.</li>
+                                <li>Benchmarked the AI + digital-twin configuration against a no-DT/no-AI baseline in simulation, observing a 23% increase in throughput, 11% reduction in latency, and 12% improvement in fairness.</li>
+                                <li>Extended the framework with learning-based consistency constraints for adaptive RIS configuration and cross-layer (PHY/MAC/network) coordination across multi-RIS, dense-user THz scenarios.</li>
+                            </ul>
+                        </div>
+
+                        <div class="resume-item">
+                            <div class="resume-item-top">
+                                <strong>Digital Twin for Temple Security & Management</strong>
+                                <em>2024</em>
+                            </div>
+                            <p class="resume-sub"><strong>Patent Application Filed, Indian Patent Office</strong> &mdash; App. No. 202521124784 A</p>
+                            <ul class="resume-bullets-list">
+                                <li>Built a real-time computer-vision pipeline for crowd estimation, violence detection, and abandoned-object detection from live camera feeds.</li>
+                                <li>Implemented automated alerting to notify security personnel of detected incidents, cutting manual monitoring effort for the feed-review workflow.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="resume-section">
+                        <h2>ACHIEVEMENTS & PATENTS</h2>
+                        <ul class="resume-bullets-list">
+                            <li>Filed 2 patent applications with the Indian Patent Office: MIRA6G (6G/RIS network simulation) and a real-time computer-vision security system (App. Nos. 202621048318 A, 202521124784 A).</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-section">
+                        <h2>EXPERIENCE</h2>
+                        <div class="resume-item">
+                            <div class="resume-item-top">
+                                <strong>Backend Engineering Intern &mdash; AEIV Global</strong>
+                                <em>Jul 2026 (1 month)</em>
+                            </div>
+                            <ul class="resume-bullets-list">
+                                <li>Led backend development for DocTranx, an AI-powered document transformation platform &mdash; architected an event-driven microservices pipeline (Apache Kafka, PostgreSQL, Redis, S3, Docker/Kubernetes) that parses, OCR-processes, and converts documents into a structured UDOM (JSON/XML) for editing and re-export to PDF, DOCX, and PPTX.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="window.print()">
+                    <svg viewBox="0 0 24 24" class="icon-inline" aria-hidden="true"><path fill="currentColor" d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+                    Print / Save as PDF
+                </button>
+                <button type="button" class="btn btn-ghost" id="resume-dismiss-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
