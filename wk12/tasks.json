@@ -1,0 +1,47 @@
+[
+  {
+    "id": "task-1",
+    "title": "Complete Database Normalization Assignment",
+    "category": "Academic",
+    "priority": "High",
+    "dueDate": "2026-11-02",
+    "completed": false,
+    "notes": "Verify 3NF and BCNF constraints with student relational schema."
+  },
+  {
+    "id": "task-2",
+    "title": "Review jQuery AJAX & DOM Traversal Lecture",
+    "category": "Coding",
+    "priority": "Medium",
+    "dueDate": "2026-10-30",
+    "completed": true,
+    "notes": "Practice $(selector).on(), event delegation, and localStorage persistence."
+  },
+  {
+    "id": "task-3",
+    "title": "Team Project Sprint Planning",
+    "category": "Project",
+    "priority": "High",
+    "dueDate": "2026-11-05",
+    "completed": false,
+    "notes": "Organize weekly deliverables, assign sprint tasks, and review GitHub repo."
+  },
+  {
+    "id": "task-4",
+    "title": "Submit Machine Learning Lab Report",
+    "category": "Academic",
+    "priority": "Low",
+    "dueDate": "2026-11-08",
+    "completed": false,
+    "notes": "Include confusion matrix, accuracy curves, and hyperparameter analysis."
+  },
+  {
+    "id": "task-5",
+    "title": "Set Up Git Version Control for Week 12 Tasks",
+    "category": "Coding",
+    "priority": "Medium",
+    "dueDate": "2026-10-29",
+    "completed": true,
+    "notes": "Ensure clean commit messages and branching strategy."
+  }
+]

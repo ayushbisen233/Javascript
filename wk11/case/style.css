@@ -1,0 +1,466 @@
+/* =========================================================
+   wk11/case/style.css - Smart India Hackathon Portal
+   Classic Green Academic & Hackathon Theme
+   ========================================================= */
+
+:root {
+    --green-950: #0a1f14;
+    --green-900: #143625;
+    --green-800: #1b4332;
+    --green-700: #2d6a4f;
+    --green-600: #40916c;
+    --green-500: #52b788;
+    --green-400: #74c69d;
+    --green-200: #b7e4c7;
+    --green-100: #d8f3dc;
+    --green-50:  #f4fbf7;
+    --bg-page:   #f3f8f5;
+    --surface:   #ffffff;
+    --text-primary: #0d281a;
+    --text-muted:   #3e5c4d;
+    --border-color: #cbe3d4;
+    --shadow-sm: 0 2px 8px rgba(20, 54, 37, 0.08);
+    --shadow-md: 0 8px 24px rgba(20, 54, 37, 0.12);
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --transition: all 0.25s ease-in-out;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* ------------------- TOP ANNOUNCEMENT BAR ------------------- */
+.top-notice-bar {
+    background: var(--green-950);
+    color: var(--green-100);
+    font-size: 0.82rem;
+    padding: 0.45rem 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(82, 183, 136, 0.3);
+}
+
+.top-notice-bar strong {
+    color: #ffffff;
+}
+
+.badge-edition {
+    background: var(--green-500);
+    color: var(--green-950);
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.72rem;
+    margin-right: 0.4rem;
+}
+
+/* ------------------- NAVIGATION BAR ------------------- */
+.navbar {
+    background: linear-gradient(135deg, var(--green-900) 0%, var(--green-800) 100%);
+    color: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+    border-bottom: 3px solid var(--green-500);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 1.5rem;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.nav-logo-icon {
+    font-size: 1.8rem;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.3rem 0.55rem;
+    border-radius: var(--radius-sm);
+}
+
+.nav-title-group h1 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+
+.nav-title-group span {
+    font-size: 0.78rem;
+    color: var(--green-200);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-link {
+    color: #e2f2e8;
+    text-decoration: none;
+    padding: 0.45rem 0.95rem;
+    font-weight: 600;
+    font-size: 0.92rem;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+.nav-link.active {
+    background: var(--green-500);
+    color: var(--green-950);
+}
+
+.btn-nav-register {
+    background: #ffffff;
+    color: var(--green-900);
+    font-weight: 700;
+    border: none;
+    padding: 0.45rem 1.1rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+}
+
+.btn-nav-register:hover {
+    background: var(--green-100);
+    transform: translateY(-1px);
+}
+
+/* ------------------- HERO BANNER ------------------- */
+.hero-section {
+    background: linear-gradient(135deg, var(--green-900) 0%, var(--green-800) 60%, var(--green-700) 100%);
+    color: #ffffff;
+    padding: 3.5rem 0 3rem;
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-pill {
+    display: inline-block;
+    background: rgba(82, 183, 136, 0.25);
+    border: 1px solid var(--green-400);
+    color: var(--green-100);
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0.3rem 1rem;
+    border-radius: 999px;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.hero-title {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--green-100);
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
+}
+
+.hero-countdown {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-md);
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    backdrop-filter: blur(4px);
+}
+
+.countdown-box {
+    text-align: center;
+}
+
+.countdown-num {
+    font-size: 1.85rem;
+    font-weight: 800;
+    font-family: monospace;
+    color: #ffffff;
+    display: block;
+}
+
+.countdown-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--green-300);
+    font-weight: 600;
+}
+
+/* ------------------- HORIZONTAL RULE ------------------- */
+hr.classic-hr {
+    border: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--green-500), var(--green-700), var(--green-500), transparent);
+    margin: 2.25rem 0;
+}
+
+hr.sub-hr {
+    border: 0;
+    height: 1px;
+    background: var(--border-color);
+    margin: 1.5rem 0;
+}
+
+/* ------------------- CONTENT SECTIONS & CARDS ------------------- */
+.main-wrapper {
+    flex: 1;
+    padding: 2.5rem 0 3rem;
+}
+
+.section-block {
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 2.25rem;
+    margin-bottom: 2rem;
+}
+
+.section-heading-wrap {
+    margin-bottom: 1.5rem;
+    border-left: 5px solid var(--green-600);
+    padding-left: 1rem;
+}
+
+.section-heading {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--green-900);
+}
+
+.section-subheading {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+/* ------------------- TEXT FORMATTING SHOWCASE ------------------- */
+.formatting-demo-card {
+    background: var(--green-50);
+    border: 2px dashed var(--green-400);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.formatting-demo-card h4 {
+    color: var(--green-800);
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.formatting-demo-card p {
+    margin-bottom: 0.65rem;
+    line-height: 1.7;
+}
+
+/* ------------------- KEY STATS GRID ------------------- */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin: 1.75rem 0;
+}
+
+.stat-box {
+    background: linear-gradient(135deg, #ffffff 0%, var(--green-50) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.4rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.stat-box:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--green-500);
+}
+
+.stat-number {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--green-800);
+    margin-bottom: 0.25rem;
+}
+
+.stat-desc {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+/* ------------------- FEATURE CARDS ------------------- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.feature-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    border-color: var(--green-500);
+    box-shadow: var(--shadow-md);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    background: var(--green-100);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--green-900);
+    margin-bottom: 0.5rem;
+}
+
+/* ------------------- FOOTER ------------------- */
+.footer-main {
+    background: var(--green-950);
+    color: var(--green-200);
+    padding: 2.5rem 0 1.5rem;
+    border-top: 4px solid var(--green-600);
+    margin-top: auto;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.footer-col h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--green-600);
+    padding-bottom: 0.4rem;
+    display: inline-block;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--green-200);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.84rem;
+}
+
+/* ------------------- RESPONSIVE ------------------- */
+@media (max-width: 860px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 0.85rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-countdown {
+        gap: 0.85rem;
+    }
+
+    .countdown-num {
+        font-size: 1.4rem;
+    }
+}

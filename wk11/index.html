@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Class Scheduler & Real-Time Countdown</title>
+    <meta name="description" content="Dynamic class scheduler and live countdown built with JavaScript timers and ES6 modules in classic green theme.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Live Real-Time Clock -->
+    <header class="header-banner">
+        <div class="container header-container">
+            <div class="header-brand">
+                <div class="brand-icon">📚</div>
+                <div>
+                    <h1 class="brand-title">Class Scheduler & Countdown</h1>
+                    <p class="brand-subtitle">Real-time Timetable Tracker & Live Session Monitor</p>
+                    <div class="tech-badge-container">
+                        <span class="tech-badge">setInterval()</span>
+                        <span class="tech-badge">setTimeout()</span>
+                        <span class="tech-badge">ES6 Modules (import/export)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-clock-card">
+                <div class="clock-top">
+                    <span id="day-badge" class="day-badge">TODAY</span>
+                    <span id="live-date" class="live-date">Loading date...</span>
+                </div>
+                <div id="live-clock" class="live-clock">--:--:-- --</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="main-content">
+        <div class="container dashboard-grid">
+            
+            <!-- Left Column: Live Timers & Countdown -->
+            <section class="timers-column">
+                
+                <!-- 1. Live In-Session Class Card -->
+                <div class="card active-session-card">
+                    <div class="card-title-bar">
+                        <h3><span>📍</span> Current Status</h3>
+                    </div>
+                    <div id="current-class-card">
+                        <div class="card-status-empty">
+                            <div class="empty-icon">⏳</div>
+                            <h3>Checking Schedule...</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Dynamic Countdown Card -->
+                <div class="card countdown-card">
+                    <div class="card-title-bar">
+                        <h3><span>⏱️</span> Next Class Countdown</h3>
+                    </div>
+                    <div id="countdown-target-label" class="countdown-target-label">
+                        Calculating next scheduled lecture...
+                    </div>
+                    <div id="countdown-display" class="countdown-display">
+                        <div class="timer-unit"><div class="unit-box">00</div><label>Days</label></div>
+                        <div class="timer-sep">:</div>
+                        <div class="timer-unit"><div class="unit-box">00</div><label>Hours</label></div>
+                        <div class="timer-sep">:</div>
+                        <div class="timer-unit"><div class="unit-box">00</div><label>Mins</label></div>
+                        <div class="timer-sep">:</div>
+                        <div class="timer-unit"><div class="unit-box highlight">00</div><label>Secs</label></div>
+                    </div>
+                </div>
+
+                <!-- 3. Study / Break Timer (Focus Mode with setTimeout) -->
+                <div class="card focus-timer-card">
+                    <div class="card-title-bar">
+                        <h3><span>🔔</span> Focus & Break Timer</h3>
+                        <small style="color: var(--green-700); font-weight: 600;">setTimeout() + setInterval()</small>
+                    </div>
+                    <div class="focus-widget-body">
+                        <div class="focus-display-wrapper">
+                            <div>
+                                <div id="focus-timer-digits" class="focus-timer-digits">05:00</div>
+                                <span id="focus-status-text" class="focus-status-text">Ready for focus session</span>
+                            </div>
+                            <select id="focus-duration" class="focus-select" title="Select timer duration">
+                                <option value="1">1 Minute (Quick Test)</option>
+                                <option value="5" selected>5 Minutes (Break)</option>
+                                <option value="15">15 Minutes (Review)</option>
+                                <option value="25">25 Minutes (Pomodoro)</option>
+                            </select>
+                        </div>
+                        <div class="focus-controls-row">
+                            <button id="btn-start-focus" class="btn btn-primary btn-sm" style="flex: 1;">
+                                ▶ Start Timer
+                            </button>
+                            <button id="btn-stop-focus" class="btn btn-secondary btn-sm" style="flex: 1;" disabled>
+                                ⏹ Stop
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Right Column: Timetable Schedule & Controls -->
+            <section class="schedule-column">
+                
+                <div class="card">
+                    <div class="schedule-header-actions">
+                        <!-- Day Filters -->
+                        <div class="filter-btn-group">
+                            <button class="filter-btn active" data-day="All">All Days</button>
+                            <button class="filter-btn" data-day="Today">Today</button>
+                            <button class="filter-btn" data-day="Monday">Mon</button>
+                            <button class="filter-btn" data-day="Tuesday">Tue</button>
+                            <button class="filter-btn" data-day="Wednesday">Wed</button>
+                            <button class="filter-btn" data-day="Thursday">Thu</button>
+                            <button class="filter-btn" data-day="Friday">Fri</button>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons">
+                            <button id="btn-test-now" class="btn btn-secondary btn-sm" title="Schedule a live test class for right now">
+                                ⚡ Test Live Now
+                            </button>
+                            <button id="open-add-btn" class="btn btn-primary btn-sm">
+                                ＋ Add Class
+                            </button>
+                            <button id="btn-reset-demo" class="btn btn-secondary btn-sm" title="Reset to default timetable">
+                                ↺ Reset
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic List of Classes -->
+                    <div id="schedule-list" class="schedule-list-container">
+                        <!-- Loaded dynamically via ES6 modules -->
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Modal for Adding New Class -->
+    <div id="add-class-modal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Schedule New Lecture</h3>
+                <button id="close-add-modal" class="modal-close-btn" aria-label="Close modal">&times;</button>
+            </div>
+            <form id="add-class-form" class="modal-body">
+                <div class="form-group">
+                    <label for="class-name">Subject / Class Name</label>
+                    <input type="text" id="class-name" class="form-control" placeholder="e.g. Operating Systems" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="class-code">Course Code</label>
+                        <input type="text" id="class-code" class="form-control" placeholder="e.g. CS-310" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="class-day">Day of Week</label>
+                        <select id="class-day" class="form-control" required>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="class-start-time">Start Time</label>
+                        <input type="time" id="class-start-time" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="class-end-time">End Time</label>
+                        <input type="time" id="class-end-time" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="class-instructor">Instructor</label>
+                        <input type="text" id="class-instructor" class="form-control" placeholder="e.g. Prof. Johnson" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="class-room">Room / Link</label>
+                        <input type="text" id="class-room" class="form-control" placeholder="e.g. Room 302 / Zoom" required>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" id="cancel-add-btn" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Class</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification container for setTimeout messages -->
+    <div id="toast-notification" class="toast">
+        <span class="toast-icon">ℹ️</span>
+        <span class="toast-text">Notification</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p><strong>Week 11 JavaScript Project</strong> &bull; Built with ES6 Modules (<code>import</code> / <code>export</code>), <code>setInterval()</code> &amp; <code>setTimeout()</code></p>
+        </div>
+    </footer>
+
+    <!-- Main ES6 Module Script -->
+    <script type="module" src="./js/app.js"></script>
+
+    <!-- CORS File Protocol Notice for ES6 Modules -->
+    <script>
+        if (window.location.protocol === 'file:') {
+            window.addEventListener('DOMContentLoaded', () => {
+                setTimeout(() => {
+                    const clock = document.getElementById('live-clock');
+                    if (clock && clock.textContent.includes('--:--')) {
+                        const banner = document.createElement('div');
+                        banner.style.cssText = 'background:#fef3c7;border:2px solid #f59e0b;color:#92400e;padding:14px;border-radius:10px;margin:15px auto;max-width:1200px;text-align:center;font-weight:600;font-size:14px;line-height:1.6;';
+                        banner.innerHTML = '⚠️ <strong>Local Server Notice:</strong> Modern browsers restrict ES6 <code>import / export</code> modules when opened directly via <code>file:///</code> protocol due to CORS security.<br>Please open this folder using <strong>VS Code Live Server</strong> (Right-click <code>index.html</code> &rarr; <em>"Open with Live Server"</em>) or run <code>python -m http.server 5500</code> in your terminal.';
+                        document.body.insertBefore(banner, document.body.firstChild);
+                    }
+                }, 1000);
+            });
+        }
+    </script>
+
+    <noscript>
+        <div style="background:#fee2e2;color:#991b1b;padding:1rem;text-align:center;">
+            JavaScript is required to run this application.
+        </div>
+    </noscript>
+
+</body>
+</html>

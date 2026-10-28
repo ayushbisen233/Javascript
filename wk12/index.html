@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenDesk - Real-Time Interactive Task & Resource Hub</title>
+    <meta name="description" content="Interactive real-time web app using JavaScript and jQuery with DOM, events, storage, and AJAX integration in classic green theme.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Banner -->
+    <header class="header-banner">
+        <div class="container header-flex">
+            <div class="brand-section">
+                <div class="brand-icon">🌿</div>
+                <div>
+                    <h1 class="brand-title">GreenDesk Workspace</h1>
+                    <p class="brand-subtitle">Interactive Task & Academic Resource Hub</p>
+                    <div class="header-badges">
+                        <span class="badge-tag">jQuery 3.7.1</span>
+                        <span class="badge-tag">DOM Manipulation</span>
+                        <span class="badge-tag">Events</span>
+                        <span class="badge-tag">localStorage</span>
+                        <span class="badge-tag">AJAX Integration</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-status-box">
+                <span class="status-dot"></span>
+                <span id="storage-count">Syncing with localStorage...</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container" style="flex: 1;">
+        
+        <!-- Live Real-Time Metrics -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-info">
+                    <p>Total Tasks</p>
+                    <h2 id="stat-total">0</h2>
+                </div>
+                <div class="stat-icon">📋</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-info">
+                    <p>Completed</p>
+                    <h2 id="stat-completed" style="color: var(--green-600);">0</h2>
+                </div>
+                <div class="stat-icon">✅</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-info">
+                    <p>Pending</p>
+                    <h2 id="stat-pending" style="color: #d97706;">0</h2>
+                </div>
+                <div class="stat-icon">⏳</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-info">
+                    <p>High Priority</p>
+                    <h2 id="stat-high" style="color: #dc2626;">0</h2>
+                </div>
+                <div class="stat-icon">🔥</div>
+            </div>
+        </section>
+
+        <!-- Two Column Dashboard Layout -->
+        <div class="dashboard-layout">
+            
+            <!-- Left Column: Task Explorer & Live List -->
+            <section class="tasks-column">
+                <div class="card">
+                    <div class="card-title-bar">
+                        <h3><span>📝</span> Task Tracker</h3>
+                        <button id="ajax-sync-btn" class="btn btn-secondary btn-sm" title="Reload from tasks.json via AJAX">
+                            🔄 Sync AJAX
+                        </button>
+                    </div>
+
+                    <!-- Search & Filter Controls -->
+                    <div class="search-filter-panel">
+                        <div class="search-input-wrapper">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" id="search-input" class="search-box" placeholder="Real-time search tasks by title, category, or notes...">
+                        </div>
+
+                        <div class="filter-tabs-row">
+                            <div class="filter-btn-group">
+                                <button class="filter-tab active" data-filter="all">All</button>
+                                <button class="filter-tab" data-filter="active">Active</button>
+                                <button class="filter-tab" data-filter="completed">Completed</button>
+                                <button class="filter-tab" data-filter="high">High Priority</button>
+                            </div>
+
+                            <select id="sort-select" class="sort-select" title="Sort tasks">
+                                <option value="newest">Sort: Newest First</option>
+                                <option value="dueDate">Sort: Due Date</option>
+                                <option value="priority">Sort: Priority</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic jQuery Task List Container -->
+                    <div id="task-list" class="task-items-container">
+                        <!-- Populated dynamically via jQuery -->
+                    </div>
+
+                    <!-- Storage Operations Footer -->
+                    <div class="storage-actions-panel">
+                        <button id="btn-export-data" class="btn btn-secondary btn-sm">
+                            💾 Export JSON
+                        </button>
+                        <button id="btn-clear-storage" class="btn btn-secondary btn-sm" style="color: #b91c1c;">
+                            🗑️ Clear Storage
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column: Add Task Form & AJAX Live Feeds -->
+            <aside class="sidebar-column">
+                
+                <!-- 1. Add Task Form (DOM & Event Handling) -->
+                <div class="card">
+                    <div class="card-title-bar">
+                        <h3><span>➕</span> Add New Task</h3>
+                    </div>
+                    <form id="task-form">
+                        <div class="form-group">
+                            <label for="task-title">Task Title *</label>
+                            <input type="text" id="task-title" class="form-control" placeholder="e.g. Complete jQuery Assignment" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="task-category">Category</label>
+                                <select id="task-category" class="form-control">
+                                    <option value="Academic">Academic</option>
+                                    <option value="Coding">Coding</option>
+                                    <option value="Project">Project</option>
+                                    <option value="Personal">Personal</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="task-priority">Priority</label>
+                                <select id="task-priority" class="form-control">
+                                    <option value="High">High Priority</option>
+                                    <option value="Medium" selected>Medium Priority</option>
+                                    <option value="Low">Low Priority</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="task-due-date">Due Date</label>
+                            <input type="date" id="task-due-date" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="task-notes">Description / Notes</label>
+                            <textarea id="task-notes" class="form-control" rows="2" placeholder="Optional details or instructions..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Save to Workspace
+                        </button>
+                    </form>
+                </div>
+
+                <!-- 2. AJAX Integration: Live Quote & Tip -->
+                <div class="card ajax-card">
+                    <div class="card-title-bar">
+                        <h3><span>💡</span> Thought of the Day</h3>
+                        <button id="btn-refresh-quote" class="btn btn-secondary btn-sm" title="Fetch new quote via AJAX">
+                            ⚡ Refresh
+                        </button>
+                    </div>
+                    <div class="ajax-content-box">
+                        <div id="ajax-quote-spinner" class="ajax-spinner">
+                            Fetching quote via $.ajax()...
+                        </div>
+                        <div id="quote-display-area">
+                            <!-- Populated via AJAX -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. AJAX Integration: Live Academic Book Search -->
+                <div class="card ajax-card">
+                    <div class="card-title-bar">
+                        <h3><span>📚</span> Search Reference Books</h3>
+                        <small style="color: var(--green-700); font-weight:600;">OpenLibrary API</small>
+                    </div>
+                    <div style="display:flex; gap:0.4rem; margin-bottom: 0.85rem;">
+                        <input type="text" id="book-search-input" class="form-control" placeholder="Search topic (e.g. Algorithms)..." style="font-size:0.84rem;">
+                        <button id="btn-search-books" class="btn btn-primary btn-sm">Find</button>
+                    </div>
+                    <div id="book-search-spinner" class="ajax-spinner">
+                        Querying OpenLibrary via $.ajax()...
+                    </div>
+                    <div id="book-search-results">
+                        <p style="color:var(--text-muted); font-size:0.82rem; text-align:center;">Enter a topic and click "Find" to fetch resources with AJAX.</p>
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast-notification" class="toast">
+        <span class="toast-icon">✓</span>
+        <span>Notification message</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p><strong>Week 12 Project</strong> &bull; JavaScript &amp; jQuery App with DOM, Events, Storage &amp; AJAX Integration</p>
+        </div>
+    </footer>
+
+    <!-- jQuery CDN with fallback to local copy -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        if (typeof jQuery === 'undefined') {
+            document.write('<script src="jquery.min.js"><\/script>');
+        }
+    </script>
+
+    <!-- Main Application Script -->
+    <script src="app.js"></script>
+
+</body>
+</html>
